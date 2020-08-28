@@ -1,0 +1,2 @@
+[Script]
+GlobalNamed=33;lgt_enlightment=A0,lgt_last_lgt_frame=A0,WAYP_visibleWaypoints=A0,STAT_LogEnabled=A0,DOM_markerNumber=A0,MAP_ScreenWidth=A0,MAP_ScreenHeight=A0,MAP_MasterScreen=A0,LOG_debug=A0,iStoryCounter=A0,fInit=A0,pCamera=A0,fPlay=A0,iWaitTime=A0,szScene=A0,iSceneStep=A0,iScene=A0,iMidStep=A0,zGoto=A0,pOcin=A0,fAntiLaag=A0,globalRainColor=A0,stippelArray=A0,stippelNumArray=A0,deletedStippel=A0,relaunchNumber=A0,relaunchArray=A0,SPSeconds=A0,stationCount=a[10;i9,i4,i1,i1,i1,i1,i1,i1,i1,i1],list=A0,relaunchPosX=i789,relaunchPoxY=i10962,fFirstInit=A0

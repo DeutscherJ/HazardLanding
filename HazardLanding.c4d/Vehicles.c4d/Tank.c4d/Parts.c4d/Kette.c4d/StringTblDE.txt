@@ -1,0 +1,3 @@
+Override=Überfahren: An
+OverrideNot=Überfahren: Aus
+ChainBroke=Die Kette wurde zerstört

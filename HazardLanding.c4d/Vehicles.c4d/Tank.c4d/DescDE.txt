@@ -1,0 +1,36 @@
+Der Panzer ist eines der mächtigsten waffen der modernen kriegsführung.
+
+Im gegensatz zu dem "Realistischen Panzer" von Horus ist dieser hier viel tollerer. Es ist das erste clonk fahrzeug das sich "An den boden anschmiegt".
+
+Benötigt das Hazard Pack.
+
+Bedienungsanleitung Panzer:
+
+Steuerung:
+
+
+Seite: Bewegen
+Doppel Seite: Turbo
+Hoch: Panzer Menü
+Runter: Anhalten
+Doppelrunter: Aussteigen
+Spezial 1/2: Kanone Hoch/Runter bewegen
+Graben: Turm Drehen
+Werfern: Feuern
+
+Menü:
+MotorAn/Aus: Schaltet den Motor an/aus
+Aufsteigen: Man steigt auf die MG
+Überfahren: Hier kannst du wählen ob du Clonks überfährst oder ihnen ausweichst
+Munition: Wenn du Munition in der Hand hast kannst du sie in den Panzer legen um ihn dadurch aufzufüllen
+Information: Zeigt allerlei informationen über den Zustand des Panzers an
+
+Mg:
+Hoch/runter: Zielen
+Seite: Drehen
+werfen: Feuern/Feuer einstellen
+Doppelhoch: Abspringen
+Doppelrunter: In den Panzer zurück steigen
+
+
+Der Panzer kann nicht nur einfach so zerstört werden. Es ist auch möglich Die Kette oder den Turm zu vernichten um ihn an gefährlichen aktionen zu hindern. DAzu einfach drauf schießen ;)

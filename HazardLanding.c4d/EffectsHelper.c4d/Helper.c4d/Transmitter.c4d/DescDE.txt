@@ -1,0 +1,1 @@
+Überträgt Energie in einem bestimmten Radius.

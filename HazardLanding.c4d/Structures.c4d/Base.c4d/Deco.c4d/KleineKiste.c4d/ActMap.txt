@@ -1,0 +1,15 @@
+[Action]
+Name=Walk
+Delay=1
+Facet=0,0,9,9
+Attach=8
+
+[Action]
+Name=Fly
+Procedure=FLOAT
+NextAction=Fly
+Facet=0,0,9,9
+FacetBase=1
+Delay=20
+
+

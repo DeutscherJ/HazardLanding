@@ -1,0 +1,1 @@
+Repariert automatisch ein Gebäude. (De-)Aktivierung über das Kontextmenü des Hazardclonks.

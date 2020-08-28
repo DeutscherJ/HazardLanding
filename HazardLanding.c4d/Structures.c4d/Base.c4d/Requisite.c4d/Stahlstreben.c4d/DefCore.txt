@@ -1,0 +1,9 @@
+[DefCore]
+id=HR3V
+Name=Stahlstreben
+Category=4
+
+Width=10
+Height=10
+Offset=-5,-5
+Picture=0,0,10,10

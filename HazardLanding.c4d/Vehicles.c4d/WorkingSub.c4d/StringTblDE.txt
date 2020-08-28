@@ -1,0 +1,3 @@
+Instrument= Benutze Instrument
+OpenGate= Öffne Schleusentor
+Exit= Verlasse U-Boot

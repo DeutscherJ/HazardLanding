@@ -1,0 +1,2 @@
+DE:Tropfenleiste
+US:Droplet rail

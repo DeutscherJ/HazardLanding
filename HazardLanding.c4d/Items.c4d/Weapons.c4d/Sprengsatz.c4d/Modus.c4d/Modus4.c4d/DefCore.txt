@@ -1,0 +1,6 @@
+[DefCore]
+id=B55B
+Name=Verankerung
+Category=1
+Picture=0,0,35,35
+ 

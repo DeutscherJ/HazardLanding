@@ -1,0 +1,1 @@
+Wenn diese Regel aktiviert ist, kann ein Spieler bei jedem Relaunch aus einer bestimmen Auswahl möglicher Hazard-Klassen wählen.

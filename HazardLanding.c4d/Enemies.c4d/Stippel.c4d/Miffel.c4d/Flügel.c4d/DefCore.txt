@@ -1,0 +1,9 @@
+[DefCore]
+id=FG5B
+Name=Flügel
+Category=4
+Width=11
+Height=9
+Offset=-5,-8
+Vertices=1
+IncompleteActivity=1

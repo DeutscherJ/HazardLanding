@@ -1,0 +1,2 @@
+DE:Ladebalken
+US:Loading Meter

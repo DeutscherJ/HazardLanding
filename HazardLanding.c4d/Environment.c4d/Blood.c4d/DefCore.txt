@@ -1,0 +1,8 @@
+[DefCore]
+id=BFGR
+Name=BloodAndGore
+Category=65
+Width=1
+Height=1
+Picture=0,0,64,64
+MaxUserSelect=3

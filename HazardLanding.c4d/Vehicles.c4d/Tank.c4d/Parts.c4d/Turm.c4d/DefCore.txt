@@ -1,0 +1,21 @@
+[DefCore]
+id=CETO
+Name=Code Exodus Tower
+Version=4,9,5
+Category=8388612
+Width=37
+Height=23
+TopFace=0,0,37,23
+Offset=-15,-11
+Value=10
+Mass=10
+Components=METL=1337;
+Picture=0,0,37,23
+Vertices=4
+VertexY=1,6,10,40 
+VertexX=1,6,0,0
+VertexFriction=20
+Rotate=1
+TimerCall=Reload
+Timer=5
+BorderBound=1

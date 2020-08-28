@@ -1,0 +1,1 @@
+Markiert, auf welcher Station man sich gerade befindet.

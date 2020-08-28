@@ -1,0 +1,12 @@
+[DefCore]
+id=SCAF
+Name=FlameFX
+Category=4
+Width=80
+Height=75
+Offset=-40,-37
+Picture=0,0,80,75
+Vertices=1
+VertexY=-44
+TimerCall=Burning
+Timer=2

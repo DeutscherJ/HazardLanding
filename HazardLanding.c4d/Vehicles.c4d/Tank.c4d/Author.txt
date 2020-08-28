@@ -1,0 +1,6 @@
+Script:
+Nicolas Harttig (Niki/wipf Hunter)
+Gestaltung/Rendering:
+Sascha Christman (SasCh)
+
+Ursprünglich für Code Exodus gedacht. Da aber wenig Hoffnung auf ein baldiges Release bestand wird der Panzer mit freundlicher genehmigung von SasCh veröffentlicht

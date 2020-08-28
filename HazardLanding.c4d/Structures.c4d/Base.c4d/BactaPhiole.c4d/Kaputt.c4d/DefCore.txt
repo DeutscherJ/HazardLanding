@@ -1,0 +1,16 @@
+[DefCore]
+id=DPG4
+Name=Destroyed Phiole
+Version=4,9,5
+Category=2
+Width=21
+Height=59
+Offset=-10,-30
+Components=METL=2;GLAS=1;
+Vertices=4
+VertexX=-9,7,-7,5
+VertexY=24,24,14,14
+VertexFriction=50,50,50,50
+Grab=1
+Mass=30
+Rotate=1

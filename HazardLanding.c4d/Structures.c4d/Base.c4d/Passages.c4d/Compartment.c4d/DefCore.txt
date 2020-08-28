@@ -1,0 +1,15 @@
+[DefCore]
+id=_CM1
+Name=Compartment
+Category=1
+Width=14
+Height=16
+Offset=-7,-8
+Value=10
+Mass=100
+Components=METL=6
+Picture=0,0,14,16
+Entrance=-7,-8,14,20
+Exclusive=1
+ContainBlast=1
+ 

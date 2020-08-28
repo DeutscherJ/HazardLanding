@@ -1,0 +1,17 @@
+[DefCore]
+id=SP_1
+Name=Scherbe
+Version=4,9,5
+Category=2
+Width=10
+Height=16
+Offset=-5,-8
+Value=0
+Mass=1
+Rotate=1
+NoStabilize=1
+Vertices=2
+VertexY=-3,3
+VertexFriction=60
+TimerCall=FadeMeOut
+Timer=1

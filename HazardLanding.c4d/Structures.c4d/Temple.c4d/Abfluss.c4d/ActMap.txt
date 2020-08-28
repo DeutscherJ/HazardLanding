@@ -1,0 +1,9 @@
+[Action]
+Name=Vent
+Procedure=NONE
+NextAction=Vent
+Delay=3
+Length=11
+Directions=1
+Facet=0,0,64,48
+PhaseCall=Emmit

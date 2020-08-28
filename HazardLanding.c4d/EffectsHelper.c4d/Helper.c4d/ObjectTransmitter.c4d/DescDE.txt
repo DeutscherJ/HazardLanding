@@ -1,0 +1,1 @@
+Wird von Gebäuden inkludiert, um den Transport von Objekten über Rohrpost zu ermöglichen.

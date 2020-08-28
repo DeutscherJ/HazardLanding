@@ -1,0 +1,7 @@
+[Material]
+Name=Wall
+Color=59,62,38
+Shape=2
+Placement=5
+TextureOverlay=SmallRock
+OverlayType=1

@@ -1,0 +1,11 @@
+[Material]
+Name=MetalBlue
+Color=10,10,10,20,20,20,0,0,128
+Shape=0
+Density=50
+Friction=100
+MaxAirSpeed=100
+MaxSlide=250
+BlastShiftTo=WeakMetal
+//BlastFree=1
+OverlayType=2

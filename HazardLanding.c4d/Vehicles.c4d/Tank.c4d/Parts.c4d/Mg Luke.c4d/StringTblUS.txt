@@ -1,0 +1,1 @@
+NoAmmoLeft=No Ammo left

@@ -1,0 +1,1 @@
+Mit dieser Regel sind Clonks für kurze Zeit nach dem Respawn unverwundbar.

@@ -1,0 +1,3 @@
+Obergrenze eines Transportschachtes und Versorgungsstation für den Schwebelift.
+
+Achtung: Wenn zuwenig Energie geliefert wird, kann der Lift abstürzen und beim Aufprall explodieren!

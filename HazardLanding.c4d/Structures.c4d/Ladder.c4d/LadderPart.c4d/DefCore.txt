@@ -1,0 +1,9 @@
+[DefCore]
+id=L1G4
+Name=LadderPart
+Version=4,9,5
+Category=1
+Width=4
+Height=4
+Offset=-2,-4
+SolidMask=0,0,4,4

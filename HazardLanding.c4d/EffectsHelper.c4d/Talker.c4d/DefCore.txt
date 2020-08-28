@@ -1,0 +1,11 @@
+[DefCore]
+id=TLKR
+Name=Talker
+Version=4,9,5
+Category=C4D_Vehicle
+Width=60
+Height=30
+Offset=-30,-15
+Vertices=1
+Entrance=-15,-20,30,30
+IncompleteActivity=1

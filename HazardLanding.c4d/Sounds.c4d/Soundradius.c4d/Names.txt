@@ -1,0 +1,2 @@
+DE:Soundradius
+US:Sound radius

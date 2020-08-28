@@ -1,0 +1,17 @@
+[DefCore]
+id=BLFS
+Version=4,6,0
+Name=Small Liftplate
+Category=2
+Width=32
+Height=22
+Offset=-16,-11
+Value=15
+Mass=15
+Picture=0,0,32,22
+Vertices=5
+VertexX=0,-11,10,-12,12
+VertexY=-20,12,9,5,5
+VertexFriction=100,100,100,100
+Grab=2
+Rotate=1

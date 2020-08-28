@@ -1,0 +1,6 @@
+[DefCore]
+id=B25B
+Name=Zeit
+Category=1
+Picture=0,0,35,35
+ 

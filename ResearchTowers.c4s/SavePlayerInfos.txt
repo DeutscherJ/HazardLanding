@@ -1,0 +1,18 @@
+[PlayerInfoList]
+LastPlayerID=2
+
+  [Client]
+  ID=0
+  Flags=Initial
+
+    [Player]
+    Name="Hydronation"
+    Filename="ScriptPlr-2.c4p"
+    Flags=Joined|AttributesFixed|NoScenarioInit|NoEliminationCheck
+    ID=2
+    Type=Script
+    Color=16777215
+    OriginalColor=16711680
+    SavgamePlayer=2
+    GameNumber=2
+    GameJoinFrame=2

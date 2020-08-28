@@ -1,0 +1,5 @@
+[DefCore]
+id=APPI
+Version=4,9,5
+Name=Clonk
+Category=1

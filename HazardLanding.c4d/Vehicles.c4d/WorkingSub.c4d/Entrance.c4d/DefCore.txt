@@ -1,0 +1,9 @@
+[DefCore]
+id=ENTR
+Name=Entrance
+Category=4
+Width=100
+Height=70
+Offset=-50,-35
+Picture=0,0,35,50
+Entrance=-40,-25,80,50

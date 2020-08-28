@@ -1,0 +1,15 @@
+[Action]
+Name=beweg
+Procedure=NONE
+Directions=1
+Length=50
+Delay=2
+Facet=0,0,46,64
+NextAction=beweg
+
+[Action]
+Name=Kaputt
+Procedure=NONE
+Directions=1
+Length=1
+Facet=0,64,48,64

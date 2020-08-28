@@ -1,0 +1,1 @@
+Aus dieser Röhre kann Wassr ausfließen. Mit SetAction("Water"); wird der Ausfluss langsam gestertet und nimmt zu, bis er das maximum erreicht hat.

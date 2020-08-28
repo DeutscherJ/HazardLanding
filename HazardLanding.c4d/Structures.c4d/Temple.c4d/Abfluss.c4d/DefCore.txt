@@ -1,0 +1,7 @@
+[DefCore]
+id=ABF_
+Name=Abflussrohr
+Category=1
+Width=64
+Height=48
+Offset=-32,-24

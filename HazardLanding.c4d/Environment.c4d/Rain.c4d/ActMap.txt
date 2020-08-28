@@ -1,0 +1,6 @@
+[Action]
+Name=Rain
+Length=7
+Delay=1
+NextAction=Rain
+Facet=0,0,800,600

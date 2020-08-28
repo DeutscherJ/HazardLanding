@@ -1,0 +1,17 @@
+[DefCore]
+id=TW4Z
+Name=Whack-A-Clonk
+Version=4,9,5
+Category=1
+MaxUserSelect=10
+Width=20
+Height=80
+Offset=-10,-40
+Value=10
+Mass=1000000
+Vertices=1
+VertexY=1
+VertexFriction=20
+Timer=15
+TimerCall=DoPunch
+ 

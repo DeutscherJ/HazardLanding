@@ -1,0 +1,2 @@
+DE:Nachschubkapsel
+US:Supply capsule

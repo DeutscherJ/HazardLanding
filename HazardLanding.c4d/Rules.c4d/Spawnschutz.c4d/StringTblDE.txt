@@ -1,0 +1,28 @@
+Call=Airbike rufen
+Weapon=Waffe ziehen/einstecken
+
+ChoosingPlayer=%s wählt jetzt die Spielkonfiguration, bitte noch etwas Geduld
+Choosing=%s sucht gerade die Regeln aus, noch ein wenig Geduld...
+Goal=Das Spielziel wurde gewählt: %s
+Rules=Regelwahl abgeschlossen: 
+CreateRules=Spielregeln
+DarknessChose=Intensität der Dunkelheit
+GoalChose=Spielziel konfigurieren
+RuleInfo=Spielregel einstellen
+Finished=Fertig
+
+MoreWinScore=Punktzahl erhöhen
+LessWinScore=Punktzahl senken
+
+MoreDarkness=Dunkelheit erhöhen
+LessDarkness=Dunkelheit senken
+
+MoreST=Spawnzeit erhöhen
+LessST=Spawnzeit senken
+
+#nix weiter
+Emptiness=Die Leere
+YourBrain=Dein Gehirn
+Nothing=Nichts
+Freezer=Der Kühlschrank
+Space=Die unendliche Weite

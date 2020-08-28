@@ -1,0 +1,10 @@
+[Action]
+Name=Burning
+Procedure=FLOAT
+NextAction=Burning
+Delay=5
+Directions=2
+FlipDir=1
+Length=4
+Facet=14,0,14,26,0,-5
+FacetBase=1

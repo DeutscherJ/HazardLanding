@@ -1,0 +1,2 @@
+DE:Deaktiviere Moff
+US:Deactivate Moffs

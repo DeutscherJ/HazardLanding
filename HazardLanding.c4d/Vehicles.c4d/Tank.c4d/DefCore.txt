@@ -1,0 +1,20 @@
+[DefCore]
+id=CETA
+Name=Code Exodus Tank
+Version=4,9,5
+Category=3332
+Width=82
+Height=40
+Offset=-41,-20
+Value=10
+Mass=999
+Components=CETA=1;
+Picture=0,0,82,40
+Vertices=4
+VertexY=16,10,10,10
+VertexX=20,-30,30,0
+VertexFriction=20
+Entrance=-11,-20,22,20
+RotatedEntrance=1
+Rotate=1
+MaxUserSelect=1

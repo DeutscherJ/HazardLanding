@@ -1,0 +1,2 @@
+TxtNext=Weiter
+TxtSkip=Skip

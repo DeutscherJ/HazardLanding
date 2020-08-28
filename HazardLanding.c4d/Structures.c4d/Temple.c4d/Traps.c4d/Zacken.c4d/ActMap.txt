@@ -1,0 +1,11 @@
+[Action]
+Name=Hang
+FacetBase=1
+NextAction=Hang
+Procedure=FLOAT
+
+[Action]
+Name=Fall
+FacetBase=1
+NextAction=Fall
+Procedure=NONE

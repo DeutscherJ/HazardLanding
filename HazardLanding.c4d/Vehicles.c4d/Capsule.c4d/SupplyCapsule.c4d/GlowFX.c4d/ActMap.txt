@@ -1,0 +1,17 @@
+[Action]
+Name=Burn
+Procedure=ATTACH
+Length=1
+Delay=1
+FacetBase=1
+NextAction=Burn
+StartCall=Burning
+
+[Action]
+Name=SwitchOff
+Procedure=ATTACH
+Length=1
+Delay=2
+FacetBase=1
+NextAction=SwitchOff
+PhaseCall=StepOff

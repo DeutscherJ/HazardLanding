@@ -1,0 +1,8 @@
+[Action]
+Name=Repair
+Procedure=ATTACH
+Length=6
+Delay=8
+Facet=0,0,40,40
+NextAction=Repair
+EndCall=DoRepair

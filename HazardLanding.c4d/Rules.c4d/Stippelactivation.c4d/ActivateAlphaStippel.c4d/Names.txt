@@ -1,0 +1,2 @@
+DE:Deaktiviere Alphastippel
+US:Deactivate Alpha Stippel

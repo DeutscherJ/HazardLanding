@@ -1,0 +1,7 @@
+[Action]
+Name=kaputt
+Procedure=NONE
+Directions=1
+Length=3
+Delay=0
+Facet=0,0,21,59

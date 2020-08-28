@@ -1,0 +1,9 @@
+[Action]
+Name=Be
+Procedure=NONE
+Delay=1
+FacetBase=1
+NextAction=Be
+FlipDir=1
+Directions=2
+EndCall=Tanken

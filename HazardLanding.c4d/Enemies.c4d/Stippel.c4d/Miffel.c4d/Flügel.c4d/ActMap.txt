@@ -1,0 +1,8 @@
+[Action]
+Name=Drehen
+Procedure=FLOAT
+Delay=1
+Length=20
+Facet=0,0,11,9
+NextAction=Drehen
+PhaseCall=Drehen

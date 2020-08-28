@@ -1,0 +1,12 @@
+[DefCore]
+id=GF3V
+Name=Gasflaschen
+Category=4
+
+Width=17
+Height=22
+Offset=-8,-11
+Vertices=4
+VertexX=-8,-8,8,8
+VertexY=9,-10,9,-10
+VertexFriction=80,80,80,80

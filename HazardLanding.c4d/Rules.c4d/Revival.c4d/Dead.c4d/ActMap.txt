@@ -1,0 +1,9 @@
+[Action]
+Name=Attach
+Procedure=ATTACH
+Directions=1
+Length=1
+Delay=10
+Facet=0,0,0,0
+NextAction=Attach
+StartCall=CheckDead

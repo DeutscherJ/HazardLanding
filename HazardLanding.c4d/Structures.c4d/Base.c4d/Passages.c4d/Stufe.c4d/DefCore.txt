@@ -1,0 +1,10 @@
+[DefCore]
+id=HSTP
+Name=Hydraulic Step
+Version=4,9,5
+Category=1
+Width=47
+Height=9
+Offset=-23,-4
+Timer=1
+TimerCall=Timer

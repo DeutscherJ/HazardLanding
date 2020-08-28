@@ -1,0 +1,7 @@
+[Action]
+Name=Fixed
+Procedure=FLOAT
+Length=1
+Delay=1000
+Facet=0,68,36,4
+NextAction=Fixed

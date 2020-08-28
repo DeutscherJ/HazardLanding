@@ -1,0 +1,2 @@
+DE:Datenkabel
+US:Data cable

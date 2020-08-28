@@ -1,0 +1,25 @@
+[DefCore]
+id=MGCR
+Name=MG Car
+Version=4,9,5
+Category=1284
+MaxUserSelect=5
+Width=71
+Height=50
+Offset=-35,-25
+Value=300
+Mass=200
+Components=METL=5;FLNT=2;
+Entrance=-10,-18,20,37
+Timer=1
+TimerCall=Smoking
+BorderBound=1
+IncompleteActivity=1
+RotatedEntrance=1
+Rotate=1
+NoStabilize=1
+VehicleControl=2
+Picture=0,50,78,60
+
+[Physical]
+Float=1000

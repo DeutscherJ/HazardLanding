@@ -1,0 +1,3 @@
+TxtConnect=Connect
+NoConnection=Connection not Possible
+TxtConnectTo=Connected with %s

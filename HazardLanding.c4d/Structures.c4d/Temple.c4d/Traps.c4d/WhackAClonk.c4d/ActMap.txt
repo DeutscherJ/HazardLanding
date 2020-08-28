@@ -1,0 +1,14 @@
+[Action]
+Name=Init
+Length=1
+Delay=1
+FacetBase=1
+EndCall=Initialized
+
+[Action]
+Name=DoPunch
+Length=30
+Delay=1
+PhaseCall=IsPunching
+Facet=0,0,20,80
+FacetTopFace=1

@@ -1,0 +1,1 @@
+Skills sind nützliche Fähigkeiten die ein Clonk erlernen und automatisch ausführen kann. Dazu gehören Fähigkeiten wie das automatische Zerbrechen von Stippeleiern oder das automatische Einnehmen von Medipacks, bei starker Verwundung. Das automatische Ausführen dieser Fähigkeiten ist nicht immer erwünscht. Daher können die Fähigkeiten (de)aktiviert werden.

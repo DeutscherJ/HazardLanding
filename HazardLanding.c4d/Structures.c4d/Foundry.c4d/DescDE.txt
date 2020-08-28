@@ -1,0 +1,7 @@
+Verarbeitet Erz zu Metall und erzeugt Strom durch Verbrennung von Materialien. Wechsel zwischen den beiden Betriebsmodi mit der Graben-Taste.
+
+Metall-Modus:
+Es wird Metall produziert, indem Kohle, Holz, Öl oder Benzin verbrannt wird. Zur Not wird von Brennmaterial auf elektrische Energie umgestiegen.
+
+Energie-Modus:
+Durch die Verbrennung von Kohle, Holz, Öl oder Benzin wird Strom erzeugt. Beim Umschalten in diesen Modus wird eine Metallherstellung abgebrochen.

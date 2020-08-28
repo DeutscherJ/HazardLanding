@@ -1,0 +1,2 @@
+DE:Deaktiviere Königin
+US:Deactivate Queen

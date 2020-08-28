@@ -1,0 +1,1 @@
+This circle shows, how far away a sound can be heard.

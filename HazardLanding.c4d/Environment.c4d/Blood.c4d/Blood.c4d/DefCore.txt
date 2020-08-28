@@ -1,0 +1,15 @@
+[DefCore]
+id=BLUT
+Name=Blood
+Version=4,9,5
+Category=C4D_Vehicle | C4D_Foreground | C4D_MouseIgnore
+Width=7
+Height=7
+Offset=-3,-3
+Vertices=1
+VertexY=1
+VertexFriction=80
+VertexCNAT=8
+TimerCall=FadeMeOut
+Timer=1
+ContactCalls=1

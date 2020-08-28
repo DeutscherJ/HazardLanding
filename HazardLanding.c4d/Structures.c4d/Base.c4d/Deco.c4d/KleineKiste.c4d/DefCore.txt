@@ -1,0 +1,26 @@
+[DefCore]
+id=KK3V
+Name=Kleine Kiste
+Category=4
+Value=30
+Mass=50
+Components=WOOD=4;
+Width=9
+Height=9
+Offset=-5,-5
+Picture=0,0,9,9
+Vertices=5
+VertexX=-6,-6,6,6,0
+VertexY=3,-5,-5,3,3
+VertexFriction=80,80,80,80
+SolidMask=0,0,9,8,0,-1
+
+
+MaxUserSelect=30
+ContactIncinerate=0
+BlastIncinerate=200
+Fragile=1
+Rebuy=1
+
+[Physical]
+Float=100

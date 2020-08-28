@@ -1,0 +1,11 @@
+[DefCore]
+id=HTCH
+Name=Hatch
+Version=4,9,5
+Category=1
+Width=32
+Height=34
+Offset=-16,-17
+Entrance=-16,-17,32,34
+Vertices=1
+VertexY=16

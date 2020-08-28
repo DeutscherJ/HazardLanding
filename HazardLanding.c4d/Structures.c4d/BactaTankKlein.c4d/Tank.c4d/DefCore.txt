@@ -1,0 +1,17 @@
+[DefCore]
+id=BCTN
+Name=Bactatank
+Category=4
+Width=33
+Height=56
+Offset=-16,-28
+Components=GLAS=4;METL=4;ABRL=2;MEDI=1;CRYS=1;
+Vertices=7
+VertexY=0,25,27,25,-20,-25,-20
+VertexX=0,-13,0,13,-13,0,13
+VertexFriction=20,20,20,20,20,20,20
+Collectible=0
+//BlastIncinerate=20
+SolidMask=0,6,32,4,0,6
+Entrance=-16,0,33,28
+TimerCall=CheckEnergy

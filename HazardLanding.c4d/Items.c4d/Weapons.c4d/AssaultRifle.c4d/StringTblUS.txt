@@ -1,0 +1,11 @@
+KRFLUpgraded=Grenadelauncher|armed to|Rocketlauncher.
+KLASUpgraded=Assault Rifle|armed with|targetlaser.
+KLASUpgrade=Arm the Assault Rifle with a targetlaser.
+KRFLUpgrade=Upgrade Grenadelauncher to Rocketlauncher.
+Rocket=Rocketlauncher
+Grenade=Grenadelauncher
+Fire1=Automaticfire
+Fire2=Singlefire
+Fire3=Pumpfire
+LaserIsOn=Laser is on
+LaserIsOff=Laser is off

@@ -1,0 +1,13 @@
+[DefCore]
+id=HAZT
+Name=Hazmat-Switch
+Category=2
+Width=11
+Height=17
+Offset=-5,-8
+Picture=0,0,11,17
+Vertices=0
+Grab=2
+NoBurnDecay=1
+ContactIncinerate=5
+BlastIncinerate=10

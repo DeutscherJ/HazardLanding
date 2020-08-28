@@ -1,0 +1,15 @@
+[DefCore]
+id=BHPG4
+Name=Bactatphiole
+Category=2
+Width=21
+Height=59
+Offset=-10,-30
+Components=GLAS=2;METL=1;ABRL=1;
+Vertices=2
+VertexY=0,28
+VertexFriction=20,20
+Collectible=0
+BlastIncinerate=20
+TimerCall=CheckEnergy
+Picture=0,59,19,56

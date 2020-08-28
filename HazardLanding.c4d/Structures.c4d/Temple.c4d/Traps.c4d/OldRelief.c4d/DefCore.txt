@@ -1,0 +1,15 @@
+[DefCore]
+id=TR4Z
+Name=Relief
+Category=1
+MaxUserSelect=10
+Width=34
+Height=45
+Offset=-17,-22
+Value=0
+Mass=15
+Components=WOOD=1;
+Vertices=1
+VertexX=0
+VertexY=22
+ 

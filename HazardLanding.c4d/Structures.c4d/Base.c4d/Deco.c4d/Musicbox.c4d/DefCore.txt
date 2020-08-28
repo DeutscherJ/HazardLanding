@@ -1,0 +1,13 @@
+[DefCore]
+id=MSBX
+Name=Musikbox
+Version=4,9,5
+Category=2
+Width=20
+Height=29
+Offset=-10,-15
+Vertices=5
+VertexX=-10,10,-10,10,0
+VertexY=14,14,-10,-10,-15
+VertexFriction=80,80,80,80
+Grab=2

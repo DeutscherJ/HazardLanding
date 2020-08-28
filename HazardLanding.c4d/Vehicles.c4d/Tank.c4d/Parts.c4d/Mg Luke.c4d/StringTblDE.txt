@@ -1,0 +1,1 @@
+NoAmmoLeft=Keine Munition mehr!

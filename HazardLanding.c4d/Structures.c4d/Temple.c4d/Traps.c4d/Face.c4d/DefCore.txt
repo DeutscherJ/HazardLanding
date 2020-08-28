@@ -1,0 +1,15 @@
+[DefCore]
+id=TRP2
+Name=Deco
+Version=4,9,5
+Category=2
+Width=75
+Height=101
+Offset=-38,-50
+Picture=0,0,75,101
+TimerCall=Timer
+Timer=1
+SolidMask=0,0,75,101
+
+[Physical]
+Float=75

@@ -1,0 +1,12 @@
+[DefCore]
+id=CEBA
+Name=Ladebalken
+Version=4,9,5
+Category=58720257
+Width=100
+Height=10
+Offset=-50,-5
+Picture=700,0,100,10
+Vertices=1
+VertexY=1
+VertexFriction=20

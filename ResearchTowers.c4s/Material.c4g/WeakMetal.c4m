@@ -1,0 +1,11 @@
+[Material]
+Name=WeakMetal
+Color=40,40,40,10,10,10,70,70,70
+Shape=0
+Density=50
+Friction=100
+BlastFree=1
+MaxAirSpeed=100
+MaxSlide=250
+
+ 

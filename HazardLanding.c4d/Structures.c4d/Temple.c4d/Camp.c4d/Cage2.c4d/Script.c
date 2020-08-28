@@ -1,0 +1,4 @@
+/*-- Käfig --*/
+
+#strict
+#include CAGE

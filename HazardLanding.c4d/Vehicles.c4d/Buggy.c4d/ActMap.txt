@@ -1,0 +1,9 @@
+[Action]
+Name=Aim
+Procedure=FLOAT
+Facet=0,0,71,50
+Delay=0
+Length=20
+NextAction=Hold
+Directions=2
+FlipDir=1

@@ -1,0 +1,20 @@
+[DefCore]
+id=CELU
+Name=Code Exodus Luke für die Mg
+Version=4,9,5
+Category=8388612
+Width=5
+Height=5
+Offset=-2,-2
+Value=10
+Mass=10
+Components=METL=1337;
+Picture=0,0,5,5
+Vertices=2
+VertexY=0,5
+VertexX=0,0
+VertexFriction=20
+Rotate=1
+TimerCall=Reload
+Timer=5
+BorderBound=1

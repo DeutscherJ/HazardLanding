@@ -1,0 +1,2 @@
+CtrlInventoryDesc=Inventar auswählen
+CtrlMenuDesc=Kontextmenü aufrufen

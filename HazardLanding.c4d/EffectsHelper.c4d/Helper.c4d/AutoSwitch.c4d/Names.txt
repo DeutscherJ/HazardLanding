@@ -1,0 +1,2 @@
+DE:Automatischer Schalter
+US:Automatic Switch

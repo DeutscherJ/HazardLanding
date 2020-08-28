@@ -1,0 +1,15 @@
+[Action]
+Name=End1
+Facet=0,0,4,28
+
+[Action]
+Name=Linkage
+Facet=4,0,55,28
+
+[Action]
+Name=Backing
+Facet=0,0,4,28
+
+[Action]
+Name=End2
+Facet=0,0,4,28

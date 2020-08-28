@@ -1,0 +1,10 @@
+[DefCore]
+id=HAKN
+Name=Haken
+Version=4,9,5
+Category=1
+Width=2
+Height=2
+Offset=-1,-1
+Timer=1
+TimerCall=Timer

@@ -1,0 +1,19 @@
+Automatikfeuer:
+Schnelle Folge von Schüssen, werden mit größerer Entfernung ungenau.
+
+Einzelfeuer:
+Einzelner Schuss, der stärker und präziser ist.
+
+Stossfeuer:
+Ähnlich dem Pumpgunschuss, nur abgeschwächt und so...
+
+Granatenwerferaufsatz:
+Verschiesst eine etwas schwache Granate (Oo, was hab ich bloß geändert...).
+
+Raketenwerferaufsatz:
+Mit dem Waffenteil-Upgrade wird der Granatenwerferaufsatz zum Raketenwerferaufsatz.
+
+Laserzielen:
+Mit dem Laserupgrade kann ein Waffenmodi ausgewählt werden der sich "Laserzielen" nennt. Nach dem "Abfeuern" des Modis (oder einfach dem aktivieren :), man muss aber einmal schiessen) hat die Waffe einen roten Laser mit dem es sich auf weite Entfernung besser zielen lässt. Auf die gleiche Weise lässt er sich wieder abstellen.
+
+(Damit wäre das Menü zwar wohl missbraucht, aber wenn's geht xD)

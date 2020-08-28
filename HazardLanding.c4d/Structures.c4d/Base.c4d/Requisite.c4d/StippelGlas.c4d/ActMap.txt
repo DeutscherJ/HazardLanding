@@ -1,0 +1,9 @@
+[Action]
+Name=beweg
+Procedure=NONE
+Directions=1
+Length=4
+Delay=6
+Facet=0,40,11,23,2,10
+FacetBase=1
+NextAction=beweg

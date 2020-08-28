@@ -1,0 +1,17 @@
+[DefCore]
+id=A35B
+Name=Bomben
+Version=4,9,1,4
+Category=2576
+MaxUserSelect=10
+Width=8
+Height=14
+Offset=-4,-7
+Value=25
+Mass=10
+Picture=18,0,50,72
+Vertices=1
+VertexY=7
+VertexFriction=100
+Collectible=1
+Rebuy=1 

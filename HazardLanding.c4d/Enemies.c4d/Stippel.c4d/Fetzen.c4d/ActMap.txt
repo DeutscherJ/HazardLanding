@@ -1,0 +1,7 @@
+[Action]
+Name=Fetzen
+Delay=1
+Length=6
+Facet=0,0,3,3
+NextAction=Fetzen
+StartCall=Zeit

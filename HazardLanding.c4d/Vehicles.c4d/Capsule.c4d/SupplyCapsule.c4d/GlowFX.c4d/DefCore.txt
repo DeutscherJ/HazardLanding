@@ -1,0 +1,10 @@
+[DefCore]
+id=SCAG
+Name=GlowFX
+Category=4
+Width=29
+Height=29
+Offset=-14,-14
+Picture=0,0,29,29
+Vertices=1
+Rotate=1

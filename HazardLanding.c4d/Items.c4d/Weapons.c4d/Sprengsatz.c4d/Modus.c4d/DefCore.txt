@@ -1,0 +1,6 @@
+[DefCore]
+id=B15B
+Name=Modus
+Category=1
+Picture=0,0,16,16
+ 

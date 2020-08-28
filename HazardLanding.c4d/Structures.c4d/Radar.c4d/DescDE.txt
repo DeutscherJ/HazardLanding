@@ -1,0 +1,1 @@
+Scant die Umgebung nach Lebewesen ab, zeigt diese an und schlägt Alarm.

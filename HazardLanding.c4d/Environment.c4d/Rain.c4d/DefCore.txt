@@ -1,0 +1,12 @@
+[DefCore]
+id=RNG4
+Name=Rain
+Version=4,9,5
+Category=C4D_StaticBack|C4D_MouseIgnore|C4D_Background|C4D_Parallax
+Width=800
+Height=600
+Offset=-400,-300
+Rotate=1
+Oversize=1
+IncompleteActivity=1
+StretchGrowth=1 

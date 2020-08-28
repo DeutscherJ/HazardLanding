@@ -1,0 +1,13 @@
+[Action]
+Name=Walk
+Procedure=WALK
+Delay=10
+FacetBase=1
+NextAction=Walk
+StartCall=Drive
+
+[Action]
+Name=Jump
+Procedure=FLIGHT
+FacetBase=1
+NextAction=Jump

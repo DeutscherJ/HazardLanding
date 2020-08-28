@@ -1,0 +1,3 @@
+Zeitzünder aktivieren oder anhalten mit Doppelt-[Graben].
+
+Spezialmenü öffnen mit [Spezial 2]. Dort lässt sich einstellen, auf welche Art der Sprengsatz gezündet werden soll. Bei eingeschalteter Verankerung haftet der Sprengsatz im aktuellen Zündungs-Modus an der Stelle des Aufschlags.

@@ -1,0 +1,7 @@
+[Action]
+Name=Rain
+Length=18
+Delay=1
+Facet=0,0,30,20
+EndCall=Remove
+Directions=4

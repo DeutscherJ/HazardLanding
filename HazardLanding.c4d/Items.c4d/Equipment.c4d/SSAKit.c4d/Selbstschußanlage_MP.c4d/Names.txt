@@ -1,0 +1,2 @@
+DE:SSAMP
+US:SSAMP

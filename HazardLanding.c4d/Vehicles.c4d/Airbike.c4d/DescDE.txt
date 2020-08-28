@@ -1,0 +1,31 @@
+Das Zweirad der Lüfte, die
+ultimativste (und teuerste)
+Allzweck-Waffe für den SFT:
+Das Airbike ist mit einem MG
+ausgestattet, kann Raketen
+abfeuern, Bomben und andere
+Inhaltsobjekte abwerfen und
+sogar unter Wasser Torpedos
+in die Spur schicken...
+Das Airbike kann angefasst
+werden und bis zu 10 Objekte
+aufnehmen, vorausgesetzt es
+befindet sich am Boden.
+
+Aufsitzen mit [Hoch], absitzen 
+(nur wenn sich das Airbike am 
+Boden befindet) mit [Runter], 
+im Hyperfly fliegen mit 
+Doppelt-[Links]/[Rechts],
+Mg an/aus, Bomben und Raketen
+abfeuern oder ein Objekt aus
+dem Inhalt des Airbikes fallen
+lassen mit [Werfen]. Damit wird
+auch die aktuell ausgewählte
+Waffe nachgeladen (falls der
+Pilot ein entsprechendes Magazin
+besitzt). Mit [Spezial 2] wird
+ein Spezialmenü aufgerufen, über
+das die Waffe ausgewählt werden
+kann. Die Munitionsanzeige gilt
+für jeden Waffenmodus seperat.

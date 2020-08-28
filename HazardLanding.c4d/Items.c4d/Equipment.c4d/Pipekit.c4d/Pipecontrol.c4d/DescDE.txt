@@ -1,0 +1,1 @@
+Dieses Objekt kontrolliert, den Transport von Objekten zwischen Gebäuden.

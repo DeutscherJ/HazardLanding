@@ -1,0 +1,9 @@
+[Action]
+Name=Walk
+FacetBase=1
+NextAction=Walk
+
+[Action]
+Name=Biking
+FacetBase=1
+NextAction=Biking

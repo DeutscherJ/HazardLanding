@@ -1,0 +1,6 @@
+[Action]
+Name=Schmoren
+Length=10
+Delay=10
+Facet=0,0,25,25
+NextAction=Hold

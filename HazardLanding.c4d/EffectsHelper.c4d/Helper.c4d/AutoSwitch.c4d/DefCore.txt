@@ -1,0 +1,10 @@
+[DefCore]
+id=ASWT
+Name=AutoSwitch
+Version=4,9,5
+Category=1
+Width=6
+Height=6
+Offset=-3,-3
+TimerCall=Timer
+Timer=10

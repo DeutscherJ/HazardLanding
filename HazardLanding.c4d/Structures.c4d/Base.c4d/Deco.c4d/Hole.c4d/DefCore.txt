@@ -1,0 +1,13 @@
+[DefCore]
+id=HOL2
+Name=Hole
+Category=1
+Width=20
+Height=15
+Offset=-10,-12
+Vertices=1
+VertexX=0
+VertexY=0
+VertexFriction=50
+TimerCall=CastSparks
+Timer=15

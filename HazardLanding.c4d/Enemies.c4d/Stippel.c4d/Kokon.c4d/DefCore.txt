@@ -1,0 +1,16 @@
+[DefCore]
+id=SK5B
+Name=Kokon
+Category=16
+Width=6
+Height=6
+Offset=-3,-3
+Value=10
+Mass=10
+Picture=7,0,134,133
+Vertices=2
+VertexY=3,3
+VertexX=-1,1
+VertexFriction=100,100
+Collectible=1
+TimerCall=Zyklus

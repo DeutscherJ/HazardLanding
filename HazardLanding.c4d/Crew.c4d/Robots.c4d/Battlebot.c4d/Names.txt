@@ -1,0 +1,2 @@
+DE:Kugelbot
+US:Kugel Bot

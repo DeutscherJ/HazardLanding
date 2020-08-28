@@ -1,0 +1,14 @@
+[DefCore]
+id=KRG4
+Name=PhiolenKran
+Version=4,9,5
+Category=2
+Width=30
+Height=63
+Offset=-15,-31
+Vertices=3
+VertexX=0,-15,15
+VertexY=31,10,10
+VertexFriction=10,100,100
+Grab=1
+TopFace=30,0,25,58,-1,-2

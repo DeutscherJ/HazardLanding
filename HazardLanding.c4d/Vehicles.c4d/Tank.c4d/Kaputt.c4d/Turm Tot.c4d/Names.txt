@@ -1,0 +1,2 @@
+DE:Turm Tot
+US:Turret Dead

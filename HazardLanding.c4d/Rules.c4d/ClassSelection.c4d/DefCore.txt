@@ -1,0 +1,9 @@
+[DefCore]
+id=KSSL
+Name=Class selection
+Category=C4D_StaticBack|C4D_Rule
+Width=1
+Height=1
+Picture=0,0,64,64
+MaxUserSelect=1
+ColorByOwner=1

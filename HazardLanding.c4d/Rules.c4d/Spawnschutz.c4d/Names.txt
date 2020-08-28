@@ -1,0 +1,2 @@
+DE:Spawn-Schutz
+US:Spawn time

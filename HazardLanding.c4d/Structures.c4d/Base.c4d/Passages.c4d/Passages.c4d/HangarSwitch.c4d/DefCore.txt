@@ -1,0 +1,12 @@
+[DefCore]
+id=_HSW
+Name=HangarSwitch
+Category=2
+Width=11
+Height=17
+Offset=-5,-8
+Picture=0,0,11,17
+Vertices=0
+Grab=2
+TimerCall=OnOff
+Timer=15

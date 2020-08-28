@@ -1,0 +1,12 @@
+MCLK_PrefCombo
+MCLK_QS
+Scoreboard
+Path %d does not exist.
+Tunnel-Smooth
+Granite-Rough
+ClonkTumble
+Part1
+Part2
+Part3
+Off
+On

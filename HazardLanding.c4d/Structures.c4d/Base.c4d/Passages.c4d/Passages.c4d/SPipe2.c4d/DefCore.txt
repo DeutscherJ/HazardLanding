@@ -1,0 +1,11 @@
+[DefCore]
+id=APIP
+Name=Abflussrohr
+Category=1
+Width=12
+Height=12
+Offset=-6,-6
+Value=0
+Mass=1
+Components=ROCK=1;
+

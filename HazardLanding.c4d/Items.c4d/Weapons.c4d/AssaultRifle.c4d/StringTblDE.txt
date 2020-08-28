@@ -1,0 +1,11 @@
+KRFLUpgraded=Granatenwerferaufsatz|zu|Raketenwerferaufsatz|auufgerüstet!
+KLASUpgraded=Sturmgewehr mit Ziellaser ausgerüstet.
+KLASUpgrade=Rüstet das Sturmgewehr mit einem Ziellaser aus.
+KRFLUpgrade=Rüstet den Granatenwerfer zum Raketenwerfer um.
+Rocket=Raketenwerferaufsatz
+Grenade=Granatenwerferaufsatz
+Fire1=Automatikfeuer
+Fire2=Einzelfeuer
+Fire3=Stossfeuer
+LaserIsOn=Laser ist an
+LaserIsOff=Laser ist aus

@@ -1,0 +1,2 @@
+DE:Landekapsel
+US:Landing capsule

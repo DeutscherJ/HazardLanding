@@ -1,0 +1,17 @@
+[Action]
+Name=Travel
+Procedure=FLOAT
+Length=1
+Delay=100
+NextAction=Travel
+FacetBase=1
+Sound=HangarTravel
+
+[Action]
+Name=Hold
+Procedure=FLOAT
+Length=1
+Delay=100
+NextAction=Hold
+FacetBase=1
+

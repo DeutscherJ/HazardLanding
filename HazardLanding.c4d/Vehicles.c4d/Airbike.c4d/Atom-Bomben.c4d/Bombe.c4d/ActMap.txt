@@ -1,0 +1,15 @@
+[Action]
+Name=Fliegen
+NextAction=Fliegen
+Delay=1
+FacetBase=1
+StartCall=Fliegen
+InLiquidAction=Wasser
+
+[Action]
+Name=Wasser
+Procedure=SWIM
+NextAction=Wasser
+Delay=50
+FacetBase=1
+StartCall=Wasser

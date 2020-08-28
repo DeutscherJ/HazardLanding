@@ -1,0 +1,2 @@
+DE:MG Wagen
+US:MG Car

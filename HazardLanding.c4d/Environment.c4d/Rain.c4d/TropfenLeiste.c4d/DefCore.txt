@@ -1,0 +1,10 @@
+[DefCore]
+id=RLG4
+Name=RainRail
+Version=4,9,5
+Category=1
+Width=10
+Height=10
+Offset=-5,-5
+Timer=1
+TimerCall=Droplets

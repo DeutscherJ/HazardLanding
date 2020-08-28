@@ -1,0 +1,14 @@
+[DefCore]
+id=CAG2
+Name=Cage
+Version=4,9,5
+Category=2
+Width=25
+Height=21
+Offset=-12,-10
+Vertices=3
+VertexY=-10,10,10
+VertexX=0,-12,12
+VertexFriction=0,40,40
+SolidMask=25,0,25,1
+BlastIncinerate=50
