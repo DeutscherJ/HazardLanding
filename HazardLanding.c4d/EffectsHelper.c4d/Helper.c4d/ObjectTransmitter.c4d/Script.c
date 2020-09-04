@@ -34,3 +34,29 @@ func Ejection(pObj)
 }
 
 func ObjectPipeConnectable(){return(1);}
+
+func CatchBlow(a,b,c,d,e,f)
+{
+	if(pObjectTransmitter)
+		pObjectTransmitter->~CheckHouses();
+	Log("%s wurde beschädigt",GetName());
+	return(_inherited(a,b,c,d,e,f));
+}
+
+func Damage(a,b,c,d,e,f)
+{
+	if(pObjectTransmitter)
+	{
+		pObjectTransmitter->~CheckHouses();
+		ScheduleCall(pObjectTransmitter,"CheckHouses",1);
+	}
+	Log("%s wurde beschädigt",GetName());
+	return(_inherited(a,b,c,d,e,f));
+}
+
+func Destruction()
+{
+	if(pObjectTransmitter)
+		pObjectTransmitter->~CheckHouses();
+	return(_inherited());
+}

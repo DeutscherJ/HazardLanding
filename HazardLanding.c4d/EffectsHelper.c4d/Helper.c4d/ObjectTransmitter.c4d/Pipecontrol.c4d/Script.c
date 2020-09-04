@@ -3,13 +3,15 @@
 #strict 2
 
 //local pHouseArray, pControl;
-local pHouseArray, pOriginalObjects, pCopiedObjects;
+local pHouseArray, pOriginalObjects, pCopiedObjects, pLastHouseIDs;
+static fDebugRohrpost;
 
 func Initialize()
 {
-	pHouseArray=[];
-	pCopiedObjects=[[]];
-	pOriginalObjects=[];
+	pHouseArray		=  [];
+	pCopiedObjects	= [[]];
+	pOriginalObjects=  [];
+	pLastHouseIDs	=  [];
 	SetVisibility(VIS_God); 
 	return(1);
 }
@@ -17,14 +19,23 @@ func Initialize()
 //Ein Objekt verlässt dieses Objekt
 func EjectionCall(pObj,pFrom)
 {
+	CheckHouses();
+	if(pObj)
+		if(pFrom)
+			if(Contained(pObj)==pFrom) return(0);//Anscheinend hat das Objekt die Hütte doch nicht verlassen
+	if(!pObj)//Wurde das Objekt verkauft oder zerstört?
+	{
+		Log("Gegenstand nicht Verkauft",pFrom);
+	}
+		
 	if(FindInArray(pOriginalObjects,pObj))//Handelt es sich um ein Original?
 	{
 		var iObjNum = FindInArray(pOriginalObjects,pObj);
 		iObjNum=iObjNum[0];
-		//Log("Nehme Original %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
+		if(fDebugRohrpost) Log("Nehme Original %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 		DeleteCopies(iObjNum);//Dann lösche überall sonst die Kopien
 		pOriginalObjects=DeleteRow(pOriginalObjects,iObjNum);//Lösche den Verweis aufs Originalobjekt
-		//Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
+		if(fDebugRohrpost) Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 	}
 	else//Ansonsten muss es sich wohl um eine Kopie handeln
 	{
@@ -38,9 +49,9 @@ func EjectionCall(pObj,pFrom)
 			Sound("Error");
 		}
 		
-		//Log("Nehme Kopie %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
+		if(fDebugRohrpost) Log("Nehme Kopie %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 		pOriginalObjects = DeleteRow(pOriginalObjects,iOriginalRow);//Lösche den Verweis aufs Originalobjekt
-		//Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
+		if(fDebugRohrpost) Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 		
 		if(pOriginal)//Ansonsten wird das Kopie mit dem Original ersetzt
 		{
@@ -90,6 +101,7 @@ func DeleteCopies(int iObjNum)
 //Ein Objekt betritt dieses Objekt
 func CollectionCall(pObj,pFrom)
 {
+	if(Contained(pObj)!=pFrom) return(0);//Anscheinend wurde das Objekt doch nicht aufgenommen
 	if(!(GetOCF(pObj)&OCF_Collectible))
 		return(0);
 	if(GetID(pObj)==GOLD || GetID(pObj)==FLAG)//Flaggen und Gold nehmen einen Sonderstatus ein, weil sie automatisch verkauft oder gehisst werden. Dies soll aber nicht passieren.
@@ -98,11 +110,12 @@ func CollectionCall(pObj,pFrom)
 		return(0);
 	}
 	var i = SearchOriginalOfCopy(pObj);
-	Log("Aufnahme %d",i);
+	if(fDebugRohrpost) Log("Aufnahme %d",i);
 	if(i==-1)
 	{
 		//Message("Objekt nicht aufgelistet",pFrom);
 		CopyObject(pObj,pFrom);
+		if(fDebugRohrpost) Log("%s Aufgenommen in %s",GetName(pObj),GetName(pFrom));
 		return(1);
 	}
 	//Message("Objekt schon aufgelistet",pFrom);
@@ -111,6 +124,7 @@ func CollectionCall(pObj,pFrom)
 
 func CopyObject(pObj,pFrom)
 {
+	CheckHouses();
 	if(!(GetOCF(pObj)&OCF_Collectible))
 		return(0);
 	if(GetID(pObj)==GOLD || GetID(pObj)==FLAG)//Flaggen und Gold nehmen einen Sonderstatus ein, weil sie automatisch verkauft oder gehisst werden. Dies soll aber nicht passieren.
@@ -118,6 +132,7 @@ func CopyObject(pObj,pFrom)
 		Message("%s wird nicht transportiert.",pFrom,GetName(pObj));
 		return(0);
 	}
+	if(fDebugRohrpost) Log("%s Kopiert in %s",GetName(pObj),GetName(pFrom));
 	pOriginalObjects=AddElement(pOriginalObjects,pObj); 
 	//Log("A%d | %d",GetLength(pOriginalObjects),GetLength(pHouseArray)); 
 	var iHouseCount = GetLength(pHouseArray);
@@ -129,7 +144,8 @@ func CopyObject(pObj,pFrom)
 		{
 			var pCopy = CreateContents(GetID(pObj),pHouse); //Dann erzeuge dort eine Kopie
 			//Log("B%d | %d",iCopiedNum-1,iHouse);
-			pCopiedObjects[iCopiedNum-1]=[];//Eine Zeile anhängen
+			if(!IsArray(pCopiedObjects[iCopiedNum-1]))
+				pCopiedObjects[iCopiedNum-1]=[];//Eine Zeile anhängen
 			pCopiedObjects[iCopiedNum-1][iHouse]=pCopy;//Und speichere einen Eintrag dieser Kopie
 		}
 	}
@@ -142,7 +158,7 @@ func AddHouse(pHouse)
 	
 	//Alle Objekte in diesem Haus durchgehen und in die bisherigen Häuser kopieren
 	for(var i=0; Contents(i,pHouse); i++)
-		CopyObject(Contents(i,pHouse));
+		CopyObject(Contents(i,pHouse),pHouse);
 		
 	var iHouse = GetLength(pHouseArray)-1; 
 	//Und nochmal alle Originalgegenstände durchgehen und ggf. eine Kopie hier anfertigen
@@ -152,6 +168,8 @@ func AddHouse(pHouse)
 		if(Contained(pOriginal)!=pHouse)//Ist nicht schon das Original im Haus X?
 		{
 			var pCopy = CreateContents(GetID(pOriginal),pHouse); //Dann erzeuge dort eine Kopie
+			if(!IsArray(pCopiedObjects[iCopy]))//Eine Zeile anhängen
+				pCopiedObjects[iCopy]=[];
 			pCopiedObjects[iCopy][iHouse]=pCopy;//Und speichere einen Eintrag dieser Kopie
 		}
 	}
@@ -165,6 +183,71 @@ func ObjectTransmitter2(pHouse)
 		return(1);
 	return(0);
 }
-/*
 
-	CopyContents(pHouse);
+func CheckHouses()
+{
+	/*Alle Häuser durchgehen und Prüfen ob Sie noch im Normalen Zustand sind*/
+	var i=0;
+	if(GetLength(pHouseArray)<2) return(0); 
+	for(var pHouse in pHouseArray)
+	{
+		if(!pHouse) return(HouseDeleted(i));//Objekt verschwunden
+		if(!pLastHouseIDs[i]) pLastHouseIDs[i]=GetID(pHouse);//ID noch nicht eingespeichert?
+		else if(GetID(pHouse)!=pLastHouseIDs[i])return(HouseDeleted(i));//ID gewechselt? / abgebrannt
+		i++;
+	}
+	return(1);
+}
+
+func HouseDeleted(int iHouseNum)
+{
+	if(fDebugRohrpost) Log("Haus %d gelöscht",iHouseNum);
+	if(GetLength(pHouseArray)==2) return(Delete());//ist nurnoch ein Haus da?, dann ist es eigentlich kein Rohrpost-Netzwerk mehr, sondern nurnoch ein Haufen Scheiße!
+	pHouseArray= DeleteRow(pHouseArray,iHouseNum);//Haus aus dem Array löschen
+	pLastHouseIDs= DeleteRow(pLastHouseIDs,iHouseNum);
+	var pHouse = pHouseArray[iHouseNum];
+	/*Alle Kopien der Originalen löschen, die im Freien, in pHouse oder kaputt sind*/
+	var i=-1;
+	for(var pObj in pOriginalObjects)
+	{
+		i++;
+		if(!pObj){DeleteCopies(i); continue;}
+		else if(!Contained(pObj)){EjectionCall(pObj); continue;}
+		else if(Contained(pObj)==pHouse){EjectionCall(pObj);}
+	}
+	
+	/*Alle Kopien löschen die in dem entfernten Haus waren/sind*/
+	for(var iCopyRows = 0; iCopyRows<GetLength(pCopiedObjects); iCopyRows++)
+	{
+		var row = pCopiedObjects[iCopyRows];// Die Einträge in der Matrix speichern
+		var backupRow=row;
+		row[iHouseNum]=0;
+		pCopiedObjects[iCopyRows]=row;//Element löschen
+		if(backupRow[iHouseNum])
+			RemoveObject(backupRow[iHouseNum],1);
+	}
+	pCopiedObjects = DeleteCol(pCopiedObjects,iHouseNum);//Spalte aus der Matrix löschen
+	
+	return(1);
+}
+
+//Sämtliche Kopien löschen!
+func Delete()
+{
+	if(fDebugRohrpost) Log("----------Lösche Rohrpost----------");
+	for(var iCopyRows = 0; iCopyRows<GetLength(pCopiedObjects); iCopyRows++)
+	{
+		var row = pCopiedObjects[iCopyRows];
+		
+		for(var i=0; i<GetLength(row);i++)
+		{
+			var pObj = row[i];
+			//row[i]=0;
+			pCopiedObjects[iCopyRows][i]=0;
+			if(pObj) RemoveObject(pObj);
+		}
+	}
+	RemoveObject();
+	if(fDebugRohrpost) Log("----------Rohrpost gelöscht----------");
+	return(1);
+}

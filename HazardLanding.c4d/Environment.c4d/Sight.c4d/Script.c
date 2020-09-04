@@ -5,6 +5,7 @@ local iMinSight, iMaxSight;
 
 global func CreateSight(pObj,iMin,iMax)
 {
+	var pSightArray = [];
 	for(var i=0; i<20; i++)
 	{
 		var sight = pObj->CreateObject(SGG4,0,0,i);
@@ -12,8 +13,9 @@ global func CreateSight(pObj,iMin,iMax)
 		SetPlrViewRange(iMax,sight);
 		LocalN("iMinSight",sight) = iMin;
 		LocalN("iMaxSight",sight) = iMax;
+		pSightArray[i]=sight;
 	}
-	return();
+	return(pSightArray);
 }
 
 func DaytimeControlled(iTime)

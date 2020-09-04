@@ -14,7 +14,7 @@ private func OpenProductionMenu(symbol, caller)
   var num = -1;
   var plan;
   while (plan = GetPlrKnowledge(GetController(caller),0,++num,C4D_All()))
-    if (DefinitionCall(plan,"IsWeaponProduct"))
+    if (DefinitionCall(plan,"IsWeaponProduct") || DefinitionCall(plan,"IsAnvilProduct"))
       AddMenuItem("Herstellung: %s", "SelectProduction", plan,caller);
   return(1);
 }

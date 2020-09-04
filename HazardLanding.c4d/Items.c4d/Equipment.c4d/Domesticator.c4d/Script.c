@@ -11,6 +11,15 @@ public func IsEquipment() { return true; }
 public func IsMachine() { return true; }
 public func IgnoreFriendlyFire() { return true; }
 public func IsBulletTarget(){return(1);}
+public func IsVehicleProduct(){return(1);}
+
+//Wenn ein Gebäude betreten wird abschalten
+func Entrance()
+{
+	fActive=true;
+	ControlDigDouble();
+	return(1);
+}
 
 func Initialize()
 {

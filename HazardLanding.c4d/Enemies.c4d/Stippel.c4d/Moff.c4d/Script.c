@@ -10,6 +10,12 @@ func Intelligence(){return(15);}
 func MaxIntelligence(iLvl){return(Intelligence()<=iLvl);}
 func Schlagable(){return(1);} 
 
+func Hammered(pObj,iStrength)
+{
+	DoEnergy(-iStrength,this());
+	OnHit(iStrength,DMG_Melee,pObj);
+	return(1);
+}
 
 func OnHit(int iDamage, int iType, object pFrom)
 {

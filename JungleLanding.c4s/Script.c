@@ -10,6 +10,18 @@ func Initialize()
   //if(!FindObject(JUNS)){CreateObject(JUNS);CreateObject(JUNS);CreateObject(JUNS);}
   FindObject(BDST)->Initialize();
   
+  RemoveAll(CICA);
+  CreateObject(CICA);
+  CreateObject(CICA);
+  
+  RemoveAll(JUNS);
+  RemoveAll(OWL1);
+  CreateObject(OWL1);
+  
+  RemoveAll(BRDS);
+  CreateObject(BRDS);
+  CreateObject(BRDS);
+  
   //for(var rocks in FindObjects(Find_NoContainer()))
 //	  SetPosition(GetX(rocks)+900,GetY(rocks),rocks);
   

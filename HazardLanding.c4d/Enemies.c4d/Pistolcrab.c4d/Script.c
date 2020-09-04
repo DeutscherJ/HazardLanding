@@ -112,7 +112,7 @@ func Hammered(pObj,iStrength)
 	else
 	{
 		DoEnergy(-iStrength,this());
-		OnHit(-iStrength,DMG_Melee);
+		OnHit(iStrength,DMG_Melee);
 	}
 	return(1);
 }

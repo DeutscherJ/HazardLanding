@@ -12,5 +12,5 @@ VertexY=-13,13
 VertexFriction=10,10
 Value=11
 Mass=10
-Components=WOOD=1;METL=1
+Components=WOOD=1;
 Grab=2

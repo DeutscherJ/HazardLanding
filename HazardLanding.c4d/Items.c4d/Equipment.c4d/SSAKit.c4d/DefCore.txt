@@ -9,7 +9,7 @@ Height=6
 Offset=-4,-3
 Value=15
 Mass=15
-Components=METL=1;
+Components=METL=1;KRFL=1;
 Picture=8,0,80,60
 Vertices=1
 VertexY=1

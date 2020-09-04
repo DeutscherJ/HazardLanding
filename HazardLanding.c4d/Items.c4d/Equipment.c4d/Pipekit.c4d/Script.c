@@ -27,7 +27,7 @@ public func ConnectTo(pObject)
   Sound("Connect");
   //pObject->~ConnectPipe(this());//Bescheid geben
   Message("$TxtConnectTo$",this(),GetName(pObject));
-  if(pFrom)
+  if(pFrom)//Schon eine Seite verbunden?
   {
 	pObject->~ConnectPipe(pFrom);//Bescheid geben
 	pFrom->~ConnectPipe(pObject);//Bescheid geben
@@ -35,6 +35,7 @@ public func ConnectTo(pObject)
 	RemoveObject();
 	return(1);
   }
+  //Oder noch keine nader Seit verbunden?
   pFrom  = pObject;
   pCable = PipeConnect(this(),pObject);
   return(1);

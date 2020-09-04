@@ -9,7 +9,7 @@ Height=11
 Offset=-5,-6
 Value=7
 Mass=10
-Components=WOOD=2;SPHR=1;
+Components=WOOD=1;
 Picture=10,0,40,42
 Vertices=3
 VertexX=0,3,-4

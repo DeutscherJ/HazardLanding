@@ -35,8 +35,8 @@ private func UpdateRangeTop()
 private func UpdateRangeBottom()
 {
   var x = GetX();
-  var y = GetY();
-  while (PathFree(x, y, x, y+5) && (y < LandscapeHeight()))
+  var y = GetY()+10;
+  while (PathFree(x, y, x, y+10) && (y < LandscapeHeight()))
     y += 5;
   RangeBottom = y+5;
   UpdateTransferZone();
@@ -80,6 +80,7 @@ private func MoveToWaitingClonk()
 {
   if (HasEMP(Liftdock)) return(1);
   var pWaiting;
+  UpdateRangeBottom();
   // wartenden Clonk finden
   for(var clonk in FindObjects(Find_OCF(OCF_CrewMember),Find_InRect(-60, RangeTop-GetY(), 120, RangeBottom-RangeTop),Find_NoContainer()))
   {
@@ -169,7 +170,7 @@ private func GrabAdjustPosition(obj)
   
   SetSpeed(0, GetYDir() / 20, obj); SetRDir(0, obj);
   SetR(0, obj);
-  SetPosition(x, GetY() + offset-2, obj);
+  SetPosition(x, GetY() + offset-5, obj);
 }
 
 private func SetMoveTo(position)
@@ -286,13 +287,75 @@ public func ControlUp(clonk)
 public func ControlLeft(clonk)
 {
   [Anhalten]
+  if(!GetYDir())
+	  RouteToVehicle("ControlLeft", clonk);
   return(DoControlStop(clonk));
 }
 
 public func ControlRight(clonk)
 {
   [Anhalten]
+  if(!GetYDir())
+	  RouteToVehicle("ControlRight", clonk);
   return(DoControlStop(clonk));
+}
+
+
+private func RouteToVehicle(call, caller, silent)
+{
+  var vehicle;
+  //FindObjects(Find_OCF(OCF_Grab()),Find_NoContainer(),Find_AtPoint(AbsX(GetX(FindObject(HZCK))),AbsY(GetY(FindObject(HZCK)))))
+  for (vehicle in FindObjects(Find_OCF(OCF_Grab()),Find_NoContainer(),Find_AtPoint(AbsX(GetX(caller)),AbsY(GetY(caller))))) 
+  {
+	if(vehicle==this()) continue;
+    if (!(GetCategory(vehicle) & C4D_Vehicle())) continue;
+    if (!PathFree(GetX(caller), GetY(caller), GetX(vehicle), GetY(vehicle))) continue;
+    
+    // Kommando 'Werfen'
+    if (call eq "ControlThrow") 
+    {
+      var getput = GetDefGrabPutGet(GetID(vehicle));
+      // Kommando per Script überladen?
+      if (PrivateCall(vehicle, call, caller))
+        return true;
+      // Will etwas aus dem Fahrzeug rausnehmen?
+      if (ContentsCount(0, caller) == 0 && getput & 2) 
+      {
+        SetCommand(caller, "Get", vehicle, 0,0, 0, 1);
+      } 
+      // Will etwas ins Fahrzeug reinlegen
+      else
+      {
+        if (getput & 1) 
+        {
+          SetCommand(caller, "Put", vehicle);
+          AppendCommand(caller, "Grab", this());
+        }      
+      }
+      // Kommando überladen
+      return true;
+    } 
+    // Anderes Kommando
+    else 
+    {
+      if (!PrivateCall(vehicle, call, caller)) 
+      {
+        var comd;
+        if (call eq "ControlLeft") comd = COMD_Left();
+        else if (call eq "ControlRight") comd = COMD_Right();
+        if (comd) SetComDir(comd, caller);
+      }
+    }
+    // Aktionsziele des Fahrzeugs setzen
+    SetActionTargets(vehicle, 0, caller);
+    // Kommando überladen    
+    return(1);
+  }
+  // Geräusch
+  if (!silent) 
+    Sound("Click");
+  // Kommando nicht überladen
+  return(0);
 }
 
 private func DoControlStop(clonk)
