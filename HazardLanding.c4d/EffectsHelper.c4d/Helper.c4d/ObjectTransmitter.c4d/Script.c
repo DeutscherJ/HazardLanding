@@ -22,14 +22,14 @@ func ConnectPipe(pOtherSide)
 func Collection2(pObj)
 {
 	if(pObjectTransmitter)
-		ScheduleCall(pObjectTransmitter,"CollectionCall",1,0,pObj,this());
+		ScheduleCall(pObjectTransmitter,"CollectionCall",1,0,ObjectNumber(pObj),this());
 	return(_inherited(pObj));
 }
 
 func Ejection(pObj)
 {
 	if(pObjectTransmitter)
-		ScheduleCall(pObjectTransmitter,"EjectionCall",1,0,pObj,this());
+		ScheduleCall(pObjectTransmitter,"EjectionCall",1,0,ObjectNumber(pObj),this());
 	return(_inherited(pObj));
 }
 

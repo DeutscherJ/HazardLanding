@@ -12,37 +12,40 @@ func Initialize()
 	pCopiedObjects	= [[]];
 	pOriginalObjects=  [];
 	pLastHouseIDs	=  [];
-	SetVisibility(VIS_God); 
+	SetVisibility(VIS_God);
+	//fDebugRohrpost = 1;
 	return(1);
 }
 
 //Ein Objekt verlässt dieses Objekt
-func EjectionCall(pObj,pFrom)
+func EjectionCall(iObjNum,pFrom)
 {
+	var pObj = Object(iObjNum);
 	CheckHouses();
 	if(pObj)
 		if(pFrom)
 			if(Contained(pObj)==pFrom) return(0);//Anscheinend hat das Objekt die Hütte doch nicht verlassen
 	if(!pObj)//Wurde das Objekt verkauft oder zerstört?
 	{
-		Log("Gegenstand nicht Verkauft",pFrom);
+		if(fDebugRohrpost) Log("Gegenstand %d verkauft",iObjNum);
 	}
 		
-	if(FindInArray(pOriginalObjects,pObj))//Handelt es sich um ein Original?
+	if(FindInArray(pOriginalObjects,iObjNum))//Handelt es sich um ein Original?
 	{
-		var iObjNum = FindInArray(pOriginalObjects,pObj);
-		iObjNum=iObjNum[0];
+		var iOriginalNum = FindInArray(pOriginalObjects,iObjNum);
+		iOriginalNum = iOriginalNum[0];
 		if(fDebugRohrpost) Log("Nehme Original %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
-		DeleteCopies(iObjNum);//Dann lösche überall sonst die Kopien
-		pOriginalObjects=DeleteRow(pOriginalObjects,iObjNum);//Lösche den Verweis aufs Originalobjekt
+		DeleteCopies(iOriginalNum);//Dann lösche überall sonst die Kopien
+		pOriginalObjects = DeleteRow(pOriginalObjects,iOriginalNum);//Lösche den Verweis aufs Originalobjekt
 		if(fDebugRohrpost) Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 	}
 	else//Ansonsten muss es sich wohl um eine Kopie handeln
 	{
-		var iOriginalRow = SearchOriginalOfCopy(pObj);//Suche das entsprechende Original heraus
+		var iOriginalRow = SearchOriginalOfCopy(iObjNum);//Suche das entsprechende Original heraus
 		//Log("Objekteintrag %d",iOriginalRow);
 		if(iOriginalRow==-1) return(1);//Dieses Objekt wurde nie kopiert (z.B. Clonk oder Fahrzeug)
-		var pOriginal = pOriginalObjects[iOriginalRow];
+		var iOriginalNum = pOriginalObjects[iOriginalRow];
+		var pOriginal = Object(iOriginalNum);
 		if(!pOriginal)//Gibt es kein Original? Dann ist irgendwas schief gelaufen
 		{
 			Message("Gegenstand nicht auffindbar",pFrom);
@@ -53,7 +56,9 @@ func EjectionCall(pObj,pFrom)
 		pOriginalObjects = DeleteRow(pOriginalObjects,iOriginalRow);//Lösche den Verweis aufs Originalobjekt
 		if(fDebugRohrpost) Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 		
-		if(pOriginal)//Ansonsten wird das Kopie mit dem Original ersetzt
+		Log("Kopie %s , Original %s",GetName(pObj),GetName(pOriginal));
+		
+		if(pOriginal && pObj)//Ansonsten wird die Kopie mit dem Original ersetzt
 		{
 			if(Contained(pObj))//Wurde diese Kopie in ein anderes Objekt versetzt?
 				Enter(Contained(pObj),pOriginal);//Dann auch Original dorthin versetzen
@@ -67,19 +72,24 @@ func EjectionCall(pObj,pFrom)
 				SetRDir(GetRDir(pObj),pOriginal);
 			}
 		}
+		if(!pObj && pOriginal)
+		{
+			Log("Kopie wurde verkauft, lösche originales %s",GetName(pOriginal));
+			RemoveObject(pOriginal);
+		}
 		DeleteCopies(iOriginalRow);//Lösche alle Kopien
 	}
 	return(1);
 }
 
 /*Suche das Original zu einer Kopie*/
-func SearchOriginalOfCopy(pCopy)
+func SearchOriginalOfCopy(iCopyNum)
 {
 	for(var iRow = 0; iRow<GetLength(pCopiedObjects); iRow++)
 	{
 		for(var iCol = 0; iCol<GetLength(pCopiedObjects[iRow]); iCol++)
 		{
-			if(pCopiedObjects[iRow][iCol]==pCopy) return(iRow);
+			if(pCopiedObjects[iRow][iCol]==iCopyNum) return(iRow);
 		}
 	}
 	return(-1);
@@ -92,15 +102,16 @@ func DeleteCopies(int iObjNum)
 	pCopiedObjects = DeleteRow(pCopiedObjects,iObjNum);//Zeile aus der Matrix löschen
 	for(var pCopy in backupRow)//Anschließend die Gegenstände löschen
 	{
-		if(pCopy)
-			RemoveObject(pCopy,1);
+		if(Object(pCopy))
+			RemoveObject(Object(pCopy),1);
 	}
 	return(1);
 }
  
 //Ein Objekt betritt dieses Objekt
-func CollectionCall(pObj,pFrom)
+func CollectionCall(iObjNum,pFrom)
 {
+	var pObj = Object(iObjNum);
 	if(Contained(pObj)!=pFrom) return(0);//Anscheinend wurde das Objekt doch nicht aufgenommen
 	if(!(GetOCF(pObj)&OCF_Collectible))
 		return(0);
@@ -109,7 +120,7 @@ func CollectionCall(pObj,pFrom)
 		Message("%s wird nicht transportiert.",pFrom,GetName(pObj));
 		return(0);
 	}
-	var i = SearchOriginalOfCopy(pObj);
+	var i = SearchOriginalOfCopy(iObjNum);
 	if(fDebugRohrpost) Log("Aufnahme %d",i);
 	if(i==-1)
 	{
@@ -133,7 +144,7 @@ func CopyObject(pObj,pFrom)
 		return(0);
 	}
 	if(fDebugRohrpost) Log("%s Kopiert in %s",GetName(pObj),GetName(pFrom));
-	pOriginalObjects=AddElement(pOriginalObjects,pObj); 
+	pOriginalObjects = AddElement(pOriginalObjects,ObjectNumber(pObj)); 
 	//Log("A%d | %d",GetLength(pOriginalObjects),GetLength(pHouseArray)); 
 	var iHouseCount = GetLength(pHouseArray);
 	var iCopiedNum = GetLength(pOriginalObjects); //Anzahl der bereits kopierten Objekte (mit diesem)
@@ -146,7 +157,7 @@ func CopyObject(pObj,pFrom)
 			//Log("B%d | %d",iCopiedNum-1,iHouse);
 			if(!IsArray(pCopiedObjects[iCopiedNum-1]))
 				pCopiedObjects[iCopiedNum-1]=[];//Eine Zeile anhängen
-			pCopiedObjects[iCopiedNum-1][iHouse]=pCopy;//Und speichere einen Eintrag dieser Kopie
+			pCopiedObjects[iCopiedNum-1][iHouse]=ObjectNumber(pCopy);//Und speichere einen Eintrag dieser Kopie
 		}
 	}
 	return(1);
@@ -164,13 +175,13 @@ func AddHouse(pHouse)
 	//Und nochmal alle Originalgegenstände durchgehen und ggf. eine Kopie hier anfertigen
 	for(var iCopy=0; iCopy<GetLength(pOriginalObjects);iCopy++)
 	{
-		var pOriginal = pOriginalObjects[iCopy];
+		var pOriginal = Object(pOriginalObjects[iCopy]);
 		if(Contained(pOriginal)!=pHouse)//Ist nicht schon das Original im Haus X?
 		{
 			var pCopy = CreateContents(GetID(pOriginal),pHouse); //Dann erzeuge dort eine Kopie
 			if(!IsArray(pCopiedObjects[iCopy]))//Eine Zeile anhängen
 				pCopiedObjects[iCopy]=[];
-			pCopiedObjects[iCopy][iHouse]=pCopy;//Und speichere einen Eintrag dieser Kopie
+			pCopiedObjects[iCopy][iHouse]=ObjectNumber(pCopy);//Und speichere einen Eintrag dieser Kopie
 		}
 	}
 	LocalN("pObjectTransmitter",pHouse)=this();
