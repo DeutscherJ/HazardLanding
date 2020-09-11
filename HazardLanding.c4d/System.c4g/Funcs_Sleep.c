@@ -76,5 +76,3 @@ global func FxSleepNSpellDamage(object pTarget, int iEffectNumber, int iDmgEngy)
   RemoveEffect(0,pTarget,iEffectNumber);
   return(iDmgEngy);
 }
-
-global func FxSleepNSpellInfo() { return("{{MBOT}} $SpellInfo$"); }

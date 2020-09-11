@@ -132,7 +132,7 @@ func Suche()
   
   Var(0)=FindObject(FLAG,0,0,-1,-1,0,0,0,NoContainer());
 
-  if(Var(0))//Flagge gefunden?
+  if(Var(0) && FindObject(FGRV))//Flagge gefunden und abnehmbar?
 	if(!FindObject(MI5B,0,0,0,0,0,"Fliegen",Var(0)))//Wurde diese noch nicht geklaut?
 		if(!Random(ObjectDistance(Var(0)))) Local(0)=Var(0);//dann klau diese
 
@@ -161,8 +161,9 @@ Paket:
   SetYDir(GetYDir(),GetActionTarget());
   return(1);
 
-Stechen:
-  if(GetID(Local(0))==FLAG)//Flagge abnehmen
+func Stechen()
+{
+  if(GetID(Local(0))==FLAG && FindObject(FGRV))//Flagge abnehmen
   {
     ObjectSetAction(Local(0),"Idle");
     SetActionTargets(Local(0));
@@ -185,8 +186,12 @@ Stechen:
   if(GetAction()eq"Stechen") return(SetXDir()&&SetYDir());
   SetAction("Stechen");
   Sound("MIStechen");
-  if(GetAction(Local(0))eq"Biking") return(DoEnergy(-Random(10),Local(0)));
-  return(Punch(Local(0),Random(10)));
+  
+  if(!GetAlive(Local(0)))
+	return(DoEnergy(-Random(10),Local(0)));
+  DoDmg(Random(10*GetCon()/100), DMG_Melee, Local(0));
+  return(1);
+}
 
 Incineration:
   if(GetAction()eq"Kokon") return(EndeKokon());

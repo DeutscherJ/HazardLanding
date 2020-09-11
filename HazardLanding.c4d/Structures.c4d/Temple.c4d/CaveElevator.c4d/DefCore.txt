@@ -2,7 +2,7 @@
 id=_CEL
 Version=4,9,8
 Name=CaveElevator
-Category=C4D_Structure|C4D_SelectKnowledge
+Category=C4D_Structure
 MaxUserSelect=2
 Width=22
 Height=13

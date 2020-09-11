@@ -1,1 +1,1 @@
-A new object definition.
+This object helps to bringt sight to a certain place on the map to multiple players.

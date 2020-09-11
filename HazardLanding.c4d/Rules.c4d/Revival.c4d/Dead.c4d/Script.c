@@ -4,7 +4,8 @@
 
 func ControlDigDouble(pClonk) {
 	var pObj = GetActionTarget();
-	if(GetAlive(pObj)) pObj->ContextRivive();
+	if(GetAlive(pObj))
+		pObj->~ContextRivive();
 	/*else
 	{
 		ChangeDef(_SKG,pClonk);
@@ -15,6 +16,7 @@ func ControlDigDouble(pClonk) {
 
 func CheckDead()
 {
+	if(!GetActionTarget()) return(RemoveObject());
 	if(GetAction(GetActionTarget()) ne "Dead" ) RemoveObject();
 	return(1);
 }

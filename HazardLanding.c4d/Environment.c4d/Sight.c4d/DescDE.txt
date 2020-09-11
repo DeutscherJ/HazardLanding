@@ -1,1 +1,1 @@
-Eine neue Objektdefinition.
+Dieses Objekt sorgt dafür, dass gewünsche Bereiche der Landschaft von mehreren Spielern zugleich gesehen werden kann. Z.B. Wenn dort eine Fackel erzeugt wurde.

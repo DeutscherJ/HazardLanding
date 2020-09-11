@@ -1,5 +1,10 @@
+
+RemoveFlag=Flagge Abnehmen
+
 Call=Airbike rufen
 Weapon=Waffe ziehen/einstecken
+
+TxtNext=Weiter
 
 ChoosingPlayer=%s wählt jetzt die Spielkonfiguration, bitte noch etwas Geduld
 Choosing=%s sucht gerade die Regeln aus, noch ein wenig Geduld...

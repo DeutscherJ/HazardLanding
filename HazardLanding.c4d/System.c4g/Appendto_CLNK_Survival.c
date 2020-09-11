@@ -19,8 +19,9 @@ func Death(a,b,c,d,e,f,g)
 	{
 		CreateMenu(RVIV, this(), this());
 		// Menüeinträge erzeugen
-		AddMenuItem("Hilfe rufen", "CallHelp",SPSH, this(), 0, 0, "Rufe verbündete Clonks nach hilfe um wiederbelebt zu werden.", 4, this());
-		AddMenuItem("Sterben", "WantedDeath",RVIV, this(), 0, 0, "Lasse den Clonk jetzt sofort sterben und warte nicht auf Hilfe.", 4, this());
+		//AddMenuItem("Hilfe rufen", "CallHelp",ROCK, this(), 0, 0,"", 4, this())
+		AddMenuItem("Hilfe rufen", "CallHelp",SPSH, this(), 0, 0, "Rufe verbündete Clonks nach hilfe um wiederbelebt zu werden.");
+		AddMenuItem("Sterben", "WantedDeath",RVIV, this(), 0, 0, "Lasse den Clonk jetzt sofort sterben und warte nicht auf Hilfe.");
 		fSpawnProtected=1;
 		SetAlive(1);
 		DoEnergy(GetEnergy()+10);
@@ -73,8 +74,8 @@ func CallHelp()
 	Message("Hilfe!",this());
 	CreateMenu(RVIV, this(), this());
 	// Menüeinträge erzeugen
-	AddMenuItem("Hilfe rufen", "CallHelp",SPSH, this(), 0, 0, "Rufe verbündete Clonks nach hilfe um wiederbelebt zu werden.", 4, this());
-	AddMenuItem("Sterben", "WantedDeath",RVIV, this(), 0, 0, "Lasse den Clonk jetzt sofort sterben und warte nicht auf Hilfe.", 4, this());
+	AddMenuItem("Hilfe rufen", "CallHelp",SPSH, this(), 0, 0, "Rufe verbündete Clonks nach hilfe um wiederbelebt zu werden.");
+	AddMenuItem("Sterben", "WantedDeath",RVIV, this(), 0, 0, "Lasse den Clonk jetzt sofort sterben und warte nicht auf Hilfe.");
 	return(1);
 }
 
@@ -83,6 +84,7 @@ func NearDeadClonk(){return(FindObject2(Find_OCF(OCF_Alive),Find_Action("Dead"),
 
 func DeadTimer()
 {
+	if(deadCounter==0) return(0);
 	if(GetAction() ne "Dead")
 	{
 		Message("",this());

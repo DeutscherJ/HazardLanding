@@ -44,27 +44,30 @@ func FxSpawnProtectStop(object target, int effect, int temp)
 
 public func IsBulletTarget(a,b,c)
 {
-	if(fSpawnProtected) return(0);
+	if(fSpawnProtected || IsDying()) return(0);
 	return(1);
 }
 
 func QueryCatchBlow(a,b,c)
-{
-	if(fSpawnProtected) return(1);
+{ 
+	//Log("%s Blar1",GetName());
+	if(fSpawnProtected || IsDying()) return(1);
 	else return(_inherited(a,b,c));
 }
 
-
 func Damage(a,b,c)
 {
-	if(fSpawnProtected) DoEnergy(a);//Spawnschutz... Abgezogenen Energie wieder raufrechnen
+	//Log("%s Blar2",GetName());
+	if(fSpawnProtected || IsDying()) DoEnergy(a);//Spawnschutz... Abgezogenen Energie wieder raufrechnen
 	return(_inherited(a,b,c));
 }
 
-public func OnDmg(a,b,c,d,e)
+public func OnDmg(int iDamage, int iType,c,d,e)
 {
-	if(fSpawnProtected) return(100);
-	return(_inherited());
+	//Log("%s Blar3",GetName());
+	//DoEnergy(iDamage, this(), true);
+	if(fSpawnProtected || IsDying()) return(100);
+	return(_inherited(iDamage,iType,c,d,e));
 }
 
 

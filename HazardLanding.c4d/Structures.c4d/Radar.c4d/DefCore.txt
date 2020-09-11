@@ -10,7 +10,12 @@ Offset=-23,-25
 Picture=0,50,64,64
 Grab=2
 TimerCall=Timer
-Components=METL=2;SURO=1;CRYS=1;
+Timer=10
+Components=METL=1;SURO=1;
 Vertices=1
 VertexY=25
-VertexFriction=20
+VertexFriction=100
+LineConnect=32
+
+[Physical]
+Energy=100000 

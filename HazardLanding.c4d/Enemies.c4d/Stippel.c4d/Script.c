@@ -162,7 +162,7 @@ func Beissen()
 		{
 			if(GetAlive(Clonk))
 			{
-				DoEnergy(-5,Clonk);//Clonk beschädigen
+				DoDmg(5*GetCon()/100, DMG_Melee, Clonk);
 				Fling(Clonk,4*GetDir()-2,-1);
 			}
 			else
@@ -171,6 +171,7 @@ func Beissen()
   return(1);
 }
 
+/*Eier legen*/
 func Kokon()
 {
   if(!SchwangerMaxTime) 	SchwangerMaxTime = 80;
@@ -183,7 +184,7 @@ func Kokon()
   if(Par(0)) Schwanger=SchwangerMaxTime;
   else Schwanger++;
   
-  if(ObjectCount2(Find_Func("IsStippel"),Find_Distance(iLegeNaehe))>iMaxStippel) 	return(0);//Zu Viele Stippel?
+  if(ObjectCount2(Find_Func("IsStippel"),Find_Distance(iLegeNaehe*2,0,iLegeNaehe))>iMaxStippel) 	return(0);//Zu Viele Stippel?
   if(FindObject(0,-100,-100,200,200,OCF_CrewMember())) 								return(0);//Nicht in Anwesenheit von anderen Clonks legen?
   if(Schwanger<SchwangerMaxTime) 	return(0);
   if(GetAction()eq"Scale") 			return(0);

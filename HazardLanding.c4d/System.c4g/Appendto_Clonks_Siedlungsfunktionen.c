@@ -65,7 +65,7 @@ public func ContextRepair()
   if (!obj) return(1);
   CreateObject(REPA,0,0,GetOwner())->Init(obj);  
 }
-
+/*
 public func ContextUndoRepair()
 {
   [Reparatur|Image=REPA|Condition=BackDamaged]
@@ -73,7 +73,7 @@ public func ContextUndoRepair()
   if (!obj) return(1);
   var rep = FindObject(REPA, 0,0,0,0, 0,"Repair",obj);
   if (rep) RemoveObject(rep);
-}
+}*/
 
 private func BackDamaged()
 {

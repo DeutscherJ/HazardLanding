@@ -146,7 +146,8 @@ func Hacken()
   
   if(GetAlive())
   {
-	DoEnergy(-25,Clonk);
+    DoDmg(25*GetCon()/100, DMG_Melee, Clonk);
+	//DoEnergy(-25,Clonk);
 	Fling(Clonk,2*GetDir()-1,1);
   }
   else
@@ -250,6 +251,6 @@ Damage:
 
 Ende:
   CreateObject(SK5B,-11*GetDir()+5,12,-1);
-  if(!Random(17)) CastObjects(MLG4,1,15); //Ein bein verlieren?
+  if(!Random(7)) CastObjects(MLG4,1,15); //Ein Bein verlieren?
   RemoveObject();
   return(1);
