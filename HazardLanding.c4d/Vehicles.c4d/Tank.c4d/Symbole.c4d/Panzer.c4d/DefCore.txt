@@ -1,5 +1,5 @@
 [DefCore]
-id=TANK
+id=CTSM
 Name=Symbol
 Category=1
 Width=1

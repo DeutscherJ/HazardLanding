@@ -39,20 +39,27 @@ public ControlCommand:
   // Andere Kommandos nicht auswerten
   return(0);
 
-public ControlUp:
+func ControlUp(pClonk)
+{
   if (Not(GameCall("MainEnergySupply"))) return(Stop());
   Sound("Click");
   if (Not(Vertical())) return(Stop());
-  SetComDir(COMD_Up());
-  SetXDir(0);
+  if(GetComDir()==COMD_Stop()) SetComDir(COMD_Up());
+  else Stop(); 
+  SetXDir(0); 
   SetAction("Travel");
   return(1);
+}
+
+func RejectEntrance(){return(1);}
 
 public ControlDownSingle:
   if (Not(GameCall("MainEnergySupply"))) return(Stop());
   Sound("Click");
   if (Not(Vertical())) return(Stop());
-  SetComDir(COMD_Down());
+  if(GetComDir()==COMD_Stop()) SetComDir(COMD_Down());
+  else Stop();
+  //SetComDir(COMD_Down());
   SetXDir(0);
   SetAction("Travel");
   return(1);
@@ -61,7 +68,9 @@ public ControlLeft:
   if (Not(GameCall("MainEnergySupply"))) return(Stop());
   Sound("Click");
   if (Not(Horizontal())) return(Stop());
-  SetComDir(COMD_Left());
+  if(GetComDir()==COMD_Stop()) SetComDir(COMD_Left());
+  else Stop();
+  //SetComDir(COMD_Left());
   SetYDir(0);
   SetAction("Travel");
   return(1);
@@ -70,7 +79,9 @@ public ControlRight:
   if (Not(GameCall("MainEnergySupply"))) return(Stop());
   Sound("Click");
   if (Not(Horizontal())) return(Stop());
-  SetComDir(COMD_Right());
+  if(GetComDir()==COMD_Stop()) SetComDir(COMD_Right());
+  else Stop();
+  //SetComDir(COMD_Right());
   SetYDir(0);
   SetAction("Travel");
   return(1);
@@ -129,7 +140,7 @@ func Bling()
 	if(GameCall("MainEnergySupply"))
 	{
 		CreateParticle("PSpark",0,-6,0,0,60,RGBa(255,64,0,50),this());
-		if(IsDark()) AddLightFlash(250,0,-6,RGBa(255,100,100,50),this());
+		if(IsDark()) AddLightFlash(250,0,-6,RGBa(255,100,100,70),this());
 		DigFreeRect(GetDefCoreVal("Offset", "DefCore",GetID(),0)+GetX(),GetDefCoreVal("Offset", "DefCore",GetID(),1)+GetY(),GetDefCoreVal("Width", "DefCore",GetID(),0),GetDefCoreVal("Height", "DefCore",GetID(),0)+2);
 	}
 	return(1);

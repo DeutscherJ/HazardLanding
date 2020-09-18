@@ -3,13 +3,22 @@
 #strict
 #appendto SHTL
 
-func Collection(pObj,fPut)
+func Collection2(pObj)
 {
 	for(var i=0; Contents(i,pObj);i++)
 	{
 		var cont = Contents(i,pObj);
 		if(cont->~DataCube())
-			cont->~Saved(pObj);
+			cont->~Saved(this());
 	}
-	return(_inherited(pObj,fPut));
+	if(Contents(0,pObj))
+	{
+		for(var i=0; Contents(i,pObj);i++)
+		{
+			var cont = Contents(i,pObj);
+			if(cont->~DataCube())
+				cont->~Saved(this());
+		}
+	}
+	return(_inherited(pObj));
 }

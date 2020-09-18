@@ -187,9 +187,14 @@ global func RandomArray(len)
 global func TakeElements(ar,inds)
 {
 	var outArray = [];
+	var j=0;
 	for(var i=0; i<GetLength(inds); i++)
 	{
-		outArray[i] = ar[inds[i]];
+		if(ar[inds[i]])
+		{
+			outArray[j] = ar[inds[i]];
+			j++;
+		}
 	}
 	return(outArray);
 }

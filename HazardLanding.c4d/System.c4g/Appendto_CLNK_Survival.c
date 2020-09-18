@@ -64,6 +64,7 @@ func ContextRivive()
 		//Sound("Tinnitus",1,0,100,GetOwner(pClonk)+1,-1);
 		deadCounter=0;
 		LocalN("fSpawnProtected",pClonk)=0;
+		CloseMenu(pClonk);
 	}
 	return(1);
 }

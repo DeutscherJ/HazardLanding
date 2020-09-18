@@ -909,7 +909,8 @@ protected func Death(int iKilledBy) {
   if(GetEffect(0,this(),wpneffect))
     RemoveEffect(0,this(),wpneffect);
 
-  FadeOut(this());
+  if(!RivivalAble() || deadCounter==16 || GetPlayerType(GetOwner())==C4PT_Script)
+	FadeOut(this());
 	
   if(HasGear()) TakeOffGear();
 	

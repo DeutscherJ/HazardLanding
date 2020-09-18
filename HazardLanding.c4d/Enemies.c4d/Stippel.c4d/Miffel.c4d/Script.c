@@ -122,13 +122,7 @@ func Fliegen()
 
 func Suche()
 {
-	if(GetOwner()==-1)
-		Local(0)=FindObject2(Find_Distance(350),Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsDrone"),Find_Func("CheckEnemyObject",GetOwner())),Find_NoContainer());//FindObject(0,-25,-25,50,50,OCF_CrewMember(),0,0,NoContainer());
-	else
-		Local(0)=FindObject2(Find_Distance(350),
-		Find_Or(Find_And(Find_Hostile(GetOwner()),Find_Or(Find_OCF(OCF_Alive),Find_Func("IsDrone"))),Find_Func("CheckEnemyObject",GetOwner())),
-		Find_NoContainer());//FindObject(0,-25,-25,50,50,OCF_CrewMember(),0,0,NoContainer());
-  //Local(0)=FindObject2(Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsDrone")),Find_NoContainer(),Find_Distance(350));//FindObject(0,0,0,-1,-1,OCF_CrewMember(),0,0,NoContainer());
+  Local(0)=FindStippelTargetDistance(350,this());
   
   Var(0)=FindObject(FLAG,0,0,-1,-1,0,0,0,NoContainer());
 

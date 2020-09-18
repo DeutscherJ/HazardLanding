@@ -58,10 +58,11 @@ Zyklus:
 /*Suche einen Gegner und verfolge diesen*/
 func Suche()
 {
-	if(GetOwner()==-1)
-		var Clonk=FindObject2(Find_Distance(300),Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsDrone"),Find_Func("CheckEnemyObject",GetOwner())),Find_NoContainer());//FindObject(0,0,0,-1,-1,OCF_CrewMember(),0,0,NoContainer());
-	else
-		var Clonk=FindObject2(Find_Distance(300),Find_Or(Find_And(Find_Or(Find_Owner(-1),Find_Hostile(GetOwner())),Find_Or(Find_OCF(OCF_Alive),Find_Func("IsDrone"))),Find_Func("CheckEnemyObject",GetOwner())),Find_NoContainer());
+	var Clonk = FindStippelTargetDistance(300,this());
+	//if(GetOwner()==-1)
+	//	var Clonk=FindObject2(Find_Distance(300),Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsMachine"),Find_Func("CheckEnemyObject",GetOwner())),Find_NoContainer());//FindObject(0,0,0,-1,-1,OCF_CrewMember(),0,0,NoContainer());
+	//else
+	//	var Clonk=FindObject2(Find_Distance(300),Find_Or(Find_And(Find_Or(Find_Owner(-1),Find_Hostile(GetOwner())),Find_Or(Find_OCF(OCF_Alive),Find_Func("IsMachine"))),Find_Func("CheckEnemyObject",GetOwner())),Find_NoContainer());
   var Queen=FindObject(KG5B,0,0,0,0,0,"Halten",this());
 
   if(Queen)
@@ -83,12 +84,13 @@ func Suche()
 /*Greife einen Gegner an*/
 func Angriff()
 {
-	if(GetOwner()==-1)
-		var Clonk=FindObject2(Find_InRect(-25,-25,50,50),Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsDrone"),Find_Func("CheckEnemyObject",GetOwner())),Find_NoContainer());//FindObject(0,-25,-25,50,50,OCF_CrewMember(),0,0,NoContainer());
-	else
-		var Clonk=FindObject2(Find_InRect(-25,-25,50,50),
-		Find_Or(Find_And(Find_Or(Find_Owner(-1),Find_Hostile(GetOwner())),Find_Or(Find_OCF(OCF_Alive),Find_Func("IsDrone"))),Find_Func("CheckEnemyObject",GetOwner())),
-		Find_NoContainer());//FindObject(0,-25,-25,50,50,OCF_CrewMember(),0,0,NoContainer());
+	var Clonk = FindStippelTargetDistance(25,this());
+	//if(GetOwner()==-1)
+	//	var Clonk=FindObject2(Find_InRect(-25,-25,50,50),Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsDrone"),Find_Func("CheckEnemyObject",GetOwner())),Find_NoContainer());//FindObject(0,-25,-25,50,50,OCF_CrewMember(),0,0,NoContainer());
+	//else
+	//	var Clonk=FindObject2(Find_InRect(-25,-25,50,50),
+	//	Find_Or(Find_And(Find_Or(Find_Owner(-1),Find_Hostile(GetOwner())),Find_Or(Find_OCF(OCF_Alive),Find_Func("IsDrone"))),Find_Func("CheckEnemyObject",GetOwner())),
+	//	Find_NoContainer());//FindObject(0,-25,-25,50,50,OCF_CrewMember(),0,0,NoContainer());
   var Queen=FindObject(KG5B,0,0,0,0,0,"Lauern",Clonk);
   var Abstand;
 

@@ -4,7 +4,8 @@
 
 local fActive,iAngle;
 
-public func IsDrone(){return(1);}
+public func IsMachine(){return(1);}
+public func IsThreat(){return(fActive);}
 public func MaxDamage() { return 80; }
 public func IsDrone() { return true; }
 public func IsEquipment() { return true; }

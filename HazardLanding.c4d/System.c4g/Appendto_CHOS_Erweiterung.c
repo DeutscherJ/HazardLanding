@@ -14,6 +14,7 @@ func Initialize()
 
 func UpdateChoice()
 {
+	ScheduleCall(this(),"UpdateChoice",15);
 	var pClonk = GetCursor(iChoosingPlr);
 	if(!GetMenu(pClonk))
 		OpenMenu();

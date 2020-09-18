@@ -1,0 +1,16 @@
+[Action]
+Name=Turn
+Procedure=FLOAT
+Facet=0,0,36,36
+Length=4
+Directions=1
+Delay=6
+NextAction=Turn
+
+[Action]
+Name=Exist
+Procedure=FLOAT
+Facet=0,0,36,36
+Length=1
+Directions=1
+NextAction=Hold

@@ -1,0 +1,4 @@
+Finished=Fertig
+More=Mehr
+Less=Weniger
+None=Keine

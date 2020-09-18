@@ -75,21 +75,15 @@ func ChangeOwner(iNewOwner,iOldOwner)
 	pTarget=0;
 	return(1);
 }
+//FindObject2(Find_Distance(150),Find_Or(Find_OCF(OCF_CrewMember),Find_Func("IsMachine")))
 func Suche()
 {
   if(pTarget)
-	  if(!GetAlive(pTarget)||ObjectDistance(this(),pTarget)>300)
+	  if((!GetAlive(pTarget) && !pTarget->~IsMachine())||ObjectDistance(this(),pTarget)>300)
 		  pTarget = 0;
 	
   //var Clonk = FindObject(0,0,0,-1,-1,OCF_CrewMember());
-  if(GetOwner()>=0) //Kein Besitzer?
-	var Clonk = FindObject2(Find_Distance(150),
-	Find_Or(Find_OCF(OCF_Alive()),Find_Func("IsDrone")),
-	Find_NoContainer(),
-	Find_Or(Find_Owner(-1),Find_Hostile(GetOwner())),
-	Find_Not(Find_Func("IsDying")));//FindObject(0,-50,-50,100,100,OCF_CrewMember(),0,0,NoContainer());
-  else
-	var Clonk = FindObject2(Find_Distance(150), Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsDrone")),Find_NoContainer(),Find_Not(Find_Func("IsDying")));//FindObject(0,-50,-50,100,100,OCF_CrewMember(),0,0,NoContainer());
+  var Clonk = FindStippelTargetDistance(150,this());//FindObject(0,-50,-50,100,100,OCF_CrewMember(),0,0,NoContainer());
   
   //var Clonk = FindObject2(Find_Distance(150), Find_Or(Find_OCF(OCF_Alive()),Find_Func("IsDrone")),Find_NoContainer(),Find_Not(Find_Owner(GetOwner())));
   var Queen = FindObject2(Find_ID(KG5B),Find_Distance(300));
@@ -111,15 +105,7 @@ func Suche()
 
 func Angriff()
 {
-  //var Clonk=FindObject(0,-50,-50,100,100,OCF_CrewMember(),0,0,NoContainer());
-  if(GetOwner()>=0)
-	var Clonk = FindObject2(Find_InRect(-50,-50,100,100),
-	Find_Or(Find_OCF(OCF_Alive()),Find_Func("IsDrone")),
-	Find_NoContainer(),
-	Find_Or(Find_Owner(-1),Find_Hostile(GetOwner())),
-	Find_Not(Find_Func("IsDying")));//FindObject(0,-50,-50,100,100,OCF_CrewMember(),0,0,NoContainer());
-  else
-	var Clonk = FindObject2(Find_InRect(-50,-50,100,100), Find_Or(Find_OCF(OCF_Alive()),Find_Func("IsDrone")),Find_Not(Find_Owner(-1)),Find_NoContainer(),Find_Not(Find_Func("IsDying")));//FindObject(0,-50,-50,100,100,OCF_CrewMember(),0,0,NoContainer());
+  var Clonk = FindStippelTargetDistance(50,this());
   
   if(ObjectDistance(pTarget,this())<50)
 	var Clonk = pTarget;

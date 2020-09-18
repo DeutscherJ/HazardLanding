@@ -44,7 +44,7 @@ func Initialize()
   if(!pLight)
   {
 	pLight = AddLightAmbience(40);
-	pLight->~ChangeColor(RGBa(120,120,255,40));
+	pLight->~ChangeColor(RGBa(120,120,255,60));
 	pLight->~TurnOn();
   }
   /*if(!pScreen)

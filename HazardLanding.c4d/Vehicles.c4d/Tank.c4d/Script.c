@@ -150,7 +150,7 @@ public func ContainedUp(pClonk){
   AddMenuItem("asdasda",0,CEDM,pClonk,0,pClonk);
   //AddMenuItem("",0,CEDM,pClonk,0,pClonk,"Sasch zwingt mich so doofe menüs zu machen :_(");
   AddMenuItem("$GoUp$","Aufstieg",MASC,pClonk,0,pClonk,"$MgMessage$");
-  AddMenuItem("$Engine$","Anaus",TANK,pClonk,0,pClonk,"$EngineInfo$");
+  AddMenuItem("$Engine$","Anaus",CTSM,pClonk,0,pClonk,"$EngineInfo$");
   AddMenuItem("$Muni$","Munition",STAP,pClonk,0,pClonk,"$MuniInfo$");
   AddMenuItem("asdasda",0,CEDM,pClonk,0,pClonk);
   AddMenuItem("$OverrideSwitch$","Roll",CEKE,pClonk,0,pClonk,"$OverrideInfo$");

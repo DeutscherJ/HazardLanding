@@ -1,2 +1,2 @@
-DE:Datenwürfel
-US:DataCube
+DE:Weißer Datenwürfel
+US:White DataCube
