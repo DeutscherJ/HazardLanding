@@ -18,3 +18,5 @@ VertexFriction=40,40
 Rebuy=1
 Collectible=1
 Rotate=1
+Timer=1
+TimerCall=AnimSchedule

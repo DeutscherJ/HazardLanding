@@ -49,8 +49,9 @@ func Activity()
 
 func FeindFindung()
 {
-	if(GetOwner()==-1) victim = FindObject2(Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsDrone"),Find_Func("CheckEnemyObject",GetOwner())),Find_Distance(200));
-	else victim = FindObject2(Find_Or(Find_OCF(OCF_CrewMember()),Find_Func("IsDrone"),Find_Func("CheckEnemyObject",GetOwner())),Find_Distance(200),Find_Hostile(GetOwner()));
+	//if(GetOwner()==-1) victim = FindObject2(Find_Or(Find_OCF(OCF_Prey()),Find_Func("IsDrone"),Find_Func("CheckEnemyObject",GetOwner())),Find_Distance(200));
+	//else victim = FindObject2(Find_Or(Find_OCF(OCF_Prey()),Find_Func("IsDrone"),Find_Func("CheckEnemyObject",GetOwner())),Find_Distance(200),Find_Hostile(GetOwner()));
+	FindStippelTargetDistance(200,this());
 }
 
 func Angriff()

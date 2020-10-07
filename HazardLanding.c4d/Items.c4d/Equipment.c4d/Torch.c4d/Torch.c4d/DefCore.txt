@@ -19,3 +19,5 @@ Rebuy=1
 Rotate=1
 Float=1
 Collectible=1
+Timer=1
+TimerCall=AnimSchedule

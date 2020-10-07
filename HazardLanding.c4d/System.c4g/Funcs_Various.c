@@ -102,12 +102,30 @@ global func LogPosSpeed(pObj,iRepeat)
 /*Liefert ein Array mit allen angesteuerten Clonks*/
 global func GetCursors(iPlr)
 {
-	var cursorArray = [];
+	var cursorArray = []; 
 	for(var i = 0; GetCursor(iPlr,i); i++)
 	{
 		cursorArray[i] = GetCursor(iPlr,i);
 	}
 	return(cursorArray);
+}
+
+global func IsControlled(pObj)
+{
+	if(!pObj)
+		pObj=this();
+	return(GetCursor(GetOwner())==pObj);
+}
+
+global func InCrew(pObj,iPlr)
+{
+	if(!pObj)
+		pObj=this();
+	for(var i=0; GetCrew(iPlr,i);i++)
+	{
+		if(pObj==GetCrew(iPlr,i)) return(1);
+	}
+	return(0);
 }
 
 /*Vergleicht das Objekt mit dem angegebenen*/

@@ -1,7 +1,8 @@
 [DefCore]
 id=MI5B
 Name=Miffel
-Category=8
+Category=C4D_Living|C4D_SelectHomebase|C4D_SelectAnimal
+MaxUserSelect=10
 Mass=10
 Width=18
 Height=16
@@ -15,7 +16,9 @@ StretchGrowth=1
 IncompleteActivity=1
 Float=1
 ContactCalls=1
+CrewMember=1
 
 [Physical]
 Energy=17000
 Breath=10000
+Float=200

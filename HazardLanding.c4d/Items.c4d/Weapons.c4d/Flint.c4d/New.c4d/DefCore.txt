@@ -1,0 +1,13 @@
+[DefCore]
+id=NAG4
+Name=Nanite
+Version=4,9,5
+Category=2
+Width=2
+Height=2
+Offset=-1,-1
+Vertices=1
+VertexY=1
+VertexFriction=20
+Timer=1
+TimerCall=Timer

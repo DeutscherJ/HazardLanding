@@ -1,12 +1,15 @@
 /*-- Neues Objekt --*/
 
 #strict
+local xLast, yLast, rLast;
+
 
 func Initialize() {
     Local(0)=0;
     Local(1)=-5;
     Local(2)=0;
     Local(3)=60;
+	Local(4)=6;
 	return(1);
 }
 
@@ -31,4 +34,30 @@ public func ControlThrow(pClonk)
 {
   pClonk->~AlternativeBeat();
   return(1);
+}
+func Anim(r,x,y,pClonk)
+{
+	var dir = GetDir(pClonk)*2-1;
+	xLast = x+Sin(r,Local(4))*dir;
+	yLast = y-Cos(r,Local(4));
+	rLast = r;
+	return(1);
+}
+
+func AnimSchedule()
+{
+	if(!Contained()) return(0);
+	if(Contents(0,Contained())!=this()) return(0);
+	var action = GetAction(Contained());
+	if(action ne "Walk" && action ne "Jump" && action ne "AlternativeBeat")
+		return(0);
+	if(Random(4))CreateParticle("PSpark",xLast,yLast,0,0,RandomX(900,1000),RGBa(180,180,255,175));
+	var dir = GetDir(Contained())*2-1;
+	CreateParticle("Plasma",xLast,yLast,Sin(rLast,40),-Cos(rLast,40)*dir,RandomX(-5,5)+80,RGBa(180,180,255,50));
+	return(1);
+}
+/*
+func ShiftedTo(pClonk)
+{
+	if(
 }

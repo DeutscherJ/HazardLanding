@@ -6,7 +6,7 @@ Length=1
 Delay=1
 Facet=0,64,18,16
 NextAction=Kokon
-StartCall=Kokon
+EndCall=Kokon
 
 [Action]
 Name=Geburt
@@ -20,6 +20,7 @@ Sound=MIFliegen
 
 [Action]
 Name=Fliegen
+Procedure=FLOAT
 Directions=2
 Length=2
 Delay=1
@@ -28,9 +29,11 @@ NextAction=Fliegen
 InLiquidAction=Wasser
 StartCall=Fliegen
 Sound=MIFliegen
+PhaseCall=FluegelSchlag
 
 [Action]
 Name=Stechen
+Procedure=FLOAT
 Directions=2
 Length=36
 Delay=1

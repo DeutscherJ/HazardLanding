@@ -116,6 +116,7 @@ NextAction=Hold
 StartCall=JumpStart
 PhaseCall=JumpPhase
 InLiquidAction=Swim
+AbortCall=AnimEnd
 
 [Action]
 Name=KneelDown

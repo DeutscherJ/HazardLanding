@@ -6,6 +6,19 @@ local Schwanger;
 local pTarget;
 static SchwangerMaxTime, iKokonNaehe, iLegeNaehe, iMaxStippel;
 
+/*Spielersteuerung*/
+func ControlThrow()
+{
+	if(Contained()) return(0);
+	Angriff();
+	return(1);
+}
+func ControlUp()
+{
+	//Jump();
+	return(0);
+}
+
 //func IsBulletTarget(){return(1);}
 public func IsThreat() { return(true); }
 func IsAlien(){return(1);}
@@ -48,7 +61,7 @@ func AngegriffenVon(pObj,pStippelOpfer)
 
 func Initialize()
 {
-  SetOwner(-1);
+  ScheduleCall(this(),"LateInit",1);
   SetAction("Walk");
   SchwangerMaxTime = 100;
   
@@ -61,10 +74,16 @@ func Initialize()
   RemoveObject();
   return(1);
 }
-
+func LateInit()
+{
+  if(!InCrew(GetOwner()))
+	SetOwner(-1);
+	return(1);
+}
 func Zyklus()
 {
   Kokon();
+  if(IsControlled()) return(0);
   Verteilen();
   Suche();//Opfer suchen
   Angriff();//Opfer angreifen

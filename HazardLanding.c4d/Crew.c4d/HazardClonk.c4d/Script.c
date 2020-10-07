@@ -60,6 +60,7 @@ func MA(x,y,r,p)
 	SetGraphics (0,this(),GetID(Contents()),5,GFXOV_MODE_Base); 
 	SetDTRotation2(r*dir2,x*dir2,y,Contents()->~XOffset(),Contents()->~YOffset(),r2,s);
 	
+	Contents()->~Anim(r*dir2,x*dir2,y,this());
 	return(Format("if(p==%d){ r=%d;x=%d;y=%d;}",GetPhase(),r,x,y));
 } 
 
@@ -494,7 +495,7 @@ protected func ControlSpecial(a,b,c,d)
   if(!Contents()) return();
 
   ClearMacroCommands();
-
+  Contents()->~Unshifted(this());
   //ControlSpecial an Container weitergeben (z.B. Fahrzeuge)
   if(Contained())
   {
@@ -523,6 +524,8 @@ protected func ControlSpecial(a,b,c,d)
 	  // Inventory verschieben
   	ShiftContents(0,0,0,1);
 		
+		
+  Contents()->~ShiftedTo(this());
   UpdateCharge();
 	CheckArmed();
 }

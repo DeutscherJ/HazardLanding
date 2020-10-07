@@ -8,6 +8,76 @@
 
 #strict
 
+/*Spieler KOntrolle*/
+func ControlRight()
+{
+	if(GetComDir()==COMD_DownLeft) SetComDir(COMD_Down);
+	else if(GetComDir()==COMD_Down) SetComDir(COMD_DownRight);
+	else if(GetComDir()==COMD_Left) SetComDir(COMD_Stop);
+	else if(GetComDir()==COMD_UpLeft) SetComDir(COMD_Up);
+	else if(GetComDir()==COMD_Up) SetComDir(COMD_UpRight);
+	else if(GetComDir()==COMD_None) SetComDir(COMD_Right);
+	SetSpeed();
+	return(1);
+}
+func ControlLeft()
+{
+	if(GetComDir()==COMD_DownRight) SetComDir(COMD_Down);
+	else if(GetComDir()==COMD_Down) SetComDir(COMD_DownLeft);
+	else if(GetComDir()==COMD_Right) SetComDir(COMD_Stop);
+	else if(GetComDir()==COMD_UpRight) SetComDir(COMD_Up);
+	else if(GetComDir()==COMD_Up) SetComDir(COMD_UpLeft);
+	else if(GetComDir()==COMD_None) SetComDir(COMD_Left);
+	SetSpeed();
+	return(1);
+}
+func ControlUp()
+{
+	if(GetComDir()==COMD_DownLeft) SetComDir(COMD_Left);
+	else if(GetComDir()==COMD_Down) SetComDir(COMD_Stop);
+	else if(GetComDir()==COMD_DownRight) SetComDir(COMD_Right);
+	else if(GetComDir()==COMD_Right) SetComDir(COMD_UpRight);
+	else if(GetComDir()==COMD_Left) SetComDir(COMD_UpLeft);
+	else if(GetComDir()==COMD_None) SetComDir(COMD_Up);
+	SetSpeed();
+	return(1);
+}
+func ControlDown()
+{
+	if(GetComDir()==COMD_UpLeft) SetComDir(COMD_Left);
+	else if(GetComDir()==COMD_Up) SetComDir(COMD_Stop);
+	else if(GetComDir()==COMD_UpRight) SetComDir(COMD_Right);
+	else if(GetComDir()==COMD_Right) SetComDir(COMD_DownRight);
+	else if(GetComDir()==COMD_Left) SetComDir(COMD_DownLeft);
+	else if(GetComDir()==COMD_None) SetComDir(COMD_Down);
+	SetSpeed();
+	return(1);
+}
+
+func ControlThrow()
+{
+	if(Contained()) return(0);
+	if(GetActionTarget()) return(SetActionTargets());
+	var pObj = FindObject2(Find_OCF(OCF_Collectible),Find_Distance(20));
+	SetActionTargets(pObj);
+	return(1);
+}
+
+func ControlDig()
+{
+	if(Contained()) return(0);
+	Stechen();
+	return(1);
+}
+
+func SetSpeed()
+{
+	if(GetComDir()==COMD_None||GetComDir()==COMD_Left||GetComDir()==COMD_Right) SetYDir(0);
+	if(GetComDir()==COMD_None||GetComDir()==COMD_Up||GetComDir()==COMD_Down) 	SetXDir(0);
+	return(1);
+}
+
+
 func IsAlien(){return(1);}
 func CheckEnemy(){return(true);}
 func IsBulletTarget(){return(1);}
@@ -24,11 +94,18 @@ func CatchBlow()
 }
 Construction:
   SetAction("Kokon");
-	SetOwner(-1);
+  ScheduleCall(this(),"LateInit",1);
   return(SetDir(Random(2)));
 
+func LateInit()
+{
+  if(!InCrew(GetOwner()))
+	SetOwner(-1);
+	return(1);
+}
+
 Kokon:
-  if(!FindObject(MB5B,0,1))       return(EndeKokon());
+  if(!FindObject(MB5B,0,1)&&GetCon()!=100)       return(EndeKokon());
   if(Random(ObjectCount(MI5B)*2)) return(0);
   if(GetCon()!=100)         	  return(DoCon(1));
   
@@ -64,12 +141,37 @@ func ContactBottom()
 	return(1);
 }
 
+func FluegelSchlag()
+{	
+	if(GetActionTarget())
+	{
+	  var x = 2*GetDir()-2;
+	  var y = 9+GetDefCoreVal("Height","DefCore",GetID(GetActionTarget()))/2;
+
+	  SetPosition(GetX()-x,GetY()+y,GetActionTarget());
+
+	  SetXDir(0,GetActionTarget());
+	  SetYDir(0,GetActionTarget());
+	}
+	
+	
+	return(1);
+}
+
 func Fliegen()
 {
   if(Stuck()) return(SetAction("Wasser"));  
 
-  if(!GetActionTarget()) Suche();
-  else                   Paket();
+	if(GetXDir()>0) if(!PathFree(GetX(),GetY(),GetX()+9,GetY()))  {ContactRight();SetXDir(0);}
+	if(GetXDir()<0) if(!PathFree(GetX(),GetY(),GetX()-10,GetY())) {ContactLeft();SetXDir(0);}
+	if(GetYDir()>0) if(!PathFree(GetX(),GetY(),GetX(),GetY()+10)) {ContactBottom();SetYDir(0);}
+	if(GetYDir()<0) if(!PathFree(GetX(),GetY(),GetX(),GetY()-10)) {ContactTop();SetYDir(0);}
+  if(GetXDir()<0) SetDir(DIR_Left);
+  if(GetXDir()>0) SetDir(DIR_Right);
+  
+  if(IsControlled())return(0);
+  if(!GetActionTarget()) 	Suche();
+  else                   	Paket();
   
   /*Opfer verfolgen*/
   if(Local(0)&&!Contained(Local(0))&&PathFree(GetX(),GetY(),GetX(Local(0)),GetY(Local(0))))
@@ -101,7 +203,7 @@ func Fliegen()
   //Fluggeschwindigkeit zufällig ändern
   if(Random(2)) Local(3)=BoundBy(Local(3)+1,0,25);
   else          Local(3)=BoundBy(Local(3)-1,0,25);
-  
+  /*
   //Fluggeschwindigkeit zufällig ändern
   Local(1)=BoundBy(Local(1)+Sin(Local(4),5),-Local(3),Local(3));
   Local(2)=BoundBy(Local(2)-Cos(Local(4),7),-Local(3),Local(3));
@@ -113,10 +215,7 @@ func Fliegen()
     if(GetXDir()>+10) SetDir(DIR_Right());
 	
 	if(GBackLiquid(0,15))                                         SetYDir();
-	if(GetXDir()>0) if(!PathFree(GetX(),GetY(),GetX()+9,GetY()))  {ContactRight();SetXDir(0);}
-	if(GetXDir()<0) if(!PathFree(GetX(),GetY(),GetX()-10,GetY())) {ContactLeft();SetXDir(0);}
-	if(GetYDir()>0) if(!PathFree(GetX(),GetY(),GetX(),GetY()+20)) {ContactBottom();SetYDir(0);}
-	if(GetYDir()<0) if(!PathFree(GetX(),GetY(),GetX(),GetY()-10)) {ContactTop();SetYDir(0);}
+  */
   return(1);
 }
 
@@ -145,18 +244,20 @@ Paket:
         return((SetXDir(0,GetActionTarget()))&&(SetActionTargets()));
   
   if(!GetAlive(GetActionTarget())) if(Local(0)) return(SetActionTargets());
-  
+  /*
   if(GetID(GetActionTarget())==FLAG) {Var(0)=2*GetDir()-2; Var(1)=12;}
   if(GetID(GetActionTarget())==FLNT) {Var(0)=4*GetDir()-2; Var(1)=10;}
 
   SetPosition(GetX()-Var(0),GetY()+Var(1),GetActionTarget());
 
   SetXDir(GetXDir(),GetActionTarget());
-  SetYDir(GetYDir(),GetActionTarget());
+  SetYDir(GetYDir(),GetActionTarget());*/
   return(1);
 
 func Stechen()
 {
+	if(!Local(0))
+		Suche();
   if(GetID(Local(0))==FLAG && FindObject(FGRV))//Flagge abnehmen
   {
     ObjectSetAction(Local(0),"Idle");
@@ -181,6 +282,8 @@ func Stechen()
   SetAction("Stechen");
   Sound("MIStechen");
   
+  
+  if(!Local(0)) return(0);
   if(!GetAlive(Local(0)))
 	return(DoEnergy(-Random(10),Local(0)));
   DoDmg(Random(10*GetCon()/100), DMG_Melee, Local(0));

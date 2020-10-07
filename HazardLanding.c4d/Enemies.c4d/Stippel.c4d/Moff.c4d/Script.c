@@ -10,6 +10,22 @@ func Intelligence(){return(15);}
 func MaxIntelligence(iLvl){return(Intelligence()<=iLvl);}
 func Schlagable(){return(1);} 
 
+/*Steuerung*/
+func ControlThrow()
+{
+	if(GetAction()ne"Walk"&&GetAction()ne"Swim") return(0);
+	if(!Angriff())
+		Graben(1);
+	return(1);
+}
+func ControlDig()
+{
+	if(FindObject2(Find_AtPoint(),Find_OCF(OCF_Grab())))
+		SetAction("Push",FindObject2(Find_AtPoint(),Find_OCF(OCF_Grab())));
+	return(1);
+}
+
+
 func Hammered(pObj,iStrength)
 {
 	DoEnergy(-iStrength,this());
@@ -39,15 +55,23 @@ func CatchBlow(iLvl,pObj)
 func AngegriffenVon(pObj,pStippelOpfer){return(1);}
 
 Initialize:
-	SetOwner(-1);
+  ScheduleCall(this(),"LateInit",1);
   SetAction("Walk");
   return(1);
+  
+func LateInit()
+{
+  if(!InCrew(GetOwner()))
+	SetOwner(-1);
+	return(1);
+}
 
 Departure:
   SetAction("Start");
   return(1);
 
 Zyklus:
+  if(IsControlled()) return(0);
   Suche();
   Angriff();
   Graben();
@@ -193,6 +217,8 @@ func Graben(fCondition)
   if(GetCommand())                               return(0);
   if(Random(5))                                  return(0);
     
+  if(IsControlled(this())) return(1);
+  
   if(Random(2)) SetComDir(COMD_Left());
   else          SetComDir(COMD_Right());
   return(1);

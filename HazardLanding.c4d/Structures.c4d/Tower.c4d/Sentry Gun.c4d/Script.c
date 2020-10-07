@@ -11,7 +11,22 @@ local iPat_Dir;
 local Active;
 local GotTarget;
 
+static factor;
+
 /* Aufrufe */
+
+
+private func Reload()
+{
+  // Munitionsart
+  var AmmoID = GetAttWeapon()->~GetFMData(FM_AmmoID);
+  // Erzeugen
+  Local(0, CreateContents(AmmoID)) = GetAttWeapon()->~GetFMData(FM_AmmoLoad);
+  // Waffe soll nachladen
+  GetAttWeapon()->~Reload(this());
+  GetAttWeapon()->~Recharge();
+  GetAttWeapon()->~StopAutoFire();
+}
 
 public func TurnOn()
 {
@@ -29,9 +44,13 @@ public func Arm(id idWeapon)
   if(!idWeapon) return();
   if(!GetName(0, idWeapon)) return();
 
-  //Ausrüsten mit idWeapon
-  var pWeapon = CreateObject(idWeapon, 0, 0, GetOwner());
-  Enter(this(),pWeapon);
+	if(FindContents(idWeapon)) var pWeapon = FindContents(idWeapon);
+	else
+	{
+		//Ausrüsten mit idWeapon
+		var pWeapon = CreateObject(idWeapon, 0, 0, GetOwner());
+		Enter(this(),pWeapon);
+	}
   //Ordnern
   SetObjectOrder(this(), pWeapon, 1);
   aim_angle = 180;
@@ -51,6 +70,8 @@ public func Initialize()
   //lieber Overlay 3 nehmen. Falls wir mal 2-overlayige waffen einbaun :]
   SetGraphics(0,this(),GetID(),3,5,0,0,this());
   SetAction("Exist");
+  SetObjDrawTransform(500,0,0,0,-500,-9*1000);
+  TurnOn();
 }
 
 public func WeaponAt(&x, &y, &r) {
@@ -201,7 +222,7 @@ public func Search(int iX, int iWidth, int iHeight)
   for(pAim in Targets)
   {
     if(GetOwner() != NO_OWNER)
-      if(pAim->GetOwner() == GetOwner() || !Hostile(pAim->GetOwner(), GetOwner()))
+      if(pAim->GetOwner() == GetOwner())
         continue;
 
     if(!CheckTarget(pAim,this()))
@@ -226,7 +247,7 @@ public func Search(int iX, int iWidth, int iHeight)
   if(!pAim)
     GotTarget = true;
 }
-
+/*
 private func Reload()
 {
   // Munitionsart
@@ -237,7 +258,7 @@ private func Reload()
   GetAttWeapon()->~Reloaded(this());
   GetAttWeapon()->~Recharge();
   GetAttWeapon()->~StopAutoFire();
-}
+}*/
 
 public func MaxDamage() {
 	return( 100 );
@@ -296,7 +317,11 @@ public func SearchLength() { return(250); } //Suchlänge
 public func AimAngle()     { return(aim_angle); } //Winkel auf Ziel
 public func ReadyToFire()  { return(1); } //Allzeit bereit
 public func IsMachine()    { return(true); } //Ist eine Elektrische Anlage
-public func IsBulletTarget() { return(true); } //Kugelziel
+public func IsBulletTarget(id idBullet, object pBullet, object pShooter)
+{
+	if(!Hostile(GetOwner(pBullet),GetOwner(this()))) return(0);
+	return(true);
+} //Kugelziel
 public func IsAiming()     { return(true); } // Die Sentry Gun "zielt" immer
 
 /* Serialisierung */
