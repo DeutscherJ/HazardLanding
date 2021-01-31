@@ -11,6 +11,7 @@
 /*Spieler KOntrolle*/
 func ControlRight()
 {
+	if(Contained()) return(0);
 	if(GetComDir()==COMD_DownLeft) SetComDir(COMD_Down);
 	else if(GetComDir()==COMD_Down) SetComDir(COMD_DownRight);
 	else if(GetComDir()==COMD_Left) SetComDir(COMD_Stop);
@@ -22,6 +23,7 @@ func ControlRight()
 }
 func ControlLeft()
 {
+	if(Contained()) return(0);
 	if(GetComDir()==COMD_DownRight) SetComDir(COMD_Down);
 	else if(GetComDir()==COMD_Down) SetComDir(COMD_DownLeft);
 	else if(GetComDir()==COMD_Right) SetComDir(COMD_Stop);
@@ -33,6 +35,7 @@ func ControlLeft()
 }
 func ControlUp()
 {
+	if(Contained()) return(0);
 	if(GetComDir()==COMD_DownLeft) SetComDir(COMD_Left);
 	else if(GetComDir()==COMD_Down) SetComDir(COMD_Stop);
 	else if(GetComDir()==COMD_DownRight) SetComDir(COMD_Right);
@@ -44,6 +47,7 @@ func ControlUp()
 }
 func ControlDown()
 {
+	if(Contained()) return(0);
 	if(GetComDir()==COMD_UpLeft) SetComDir(COMD_Left);
 	else if(GetComDir()==COMD_Up) SetComDir(COMD_Stop);
 	else if(GetComDir()==COMD_UpRight) SetComDir(COMD_Right);
@@ -72,6 +76,7 @@ func ControlDig()
 
 func SetSpeed()
 {
+	if(!IsControlled()) return(1);
 	if(GetComDir()==COMD_None||GetComDir()==COMD_Left||GetComDir()==COMD_Right) SetYDir(0);
 	if(GetComDir()==COMD_None||GetComDir()==COMD_Up||GetComDir()==COMD_Down) 	SetXDir(0);
 	return(1);
@@ -203,19 +208,22 @@ func Fliegen()
   //Fluggeschwindigkeit zufällig ändern
   if(Random(2)) Local(3)=BoundBy(Local(3)+1,0,25);
   else          Local(3)=BoundBy(Local(3)-1,0,25);
-  /*
-  //Fluggeschwindigkeit zufällig ändern
-  Local(1)=BoundBy(Local(1)+Sin(Local(4),5),-Local(3),Local(3));
-  Local(2)=BoundBy(Local(2)-Cos(Local(4),7),-Local(3),Local(3));
   
-  SetXDir(Local(1));
-  SetYDir(Local(2));
+  if(!IsControlled())
+  {
+	  //Fluggeschwindigkeit zufällig ändern
+	  Local(1)=BoundBy(Local(1)+Sin(Local(4),5),-Local(3),Local(3));
+	  Local(2)=BoundBy(Local(2)-Cos(Local(4),7),-Local(3),Local(3));
+	  
+	  SetXDir(Local(1));
+	  SetYDir(Local(2));
+			
+		if(GetXDir()<-10) SetDir(DIR_Left());
+		if(GetXDir()>+10) SetDir(DIR_Right());
 		
-	if(GetXDir()<-10) SetDir(DIR_Left());
-    if(GetXDir()>+10) SetDir(DIR_Right());
-	
-	if(GBackLiquid(0,15))                                         SetYDir();
-  */
+		if(GBackLiquid(0,15))                                         SetYDir();
+  }
+  
   return(1);
 }
 
@@ -292,7 +300,8 @@ func Stechen()
 
 Incineration:
   if(GetAction()eq"Kokon") return(EndeKokon());
-  return(SetAction("Feuer"));
+  ObjectSetAction(this(),"Feuer",0,0,1);
+  return(1);
 
 Feuer:
   SetXDir();

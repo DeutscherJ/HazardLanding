@@ -41,9 +41,9 @@ public ControlCommand:
 
 func ControlUp(pClonk)
 {
-  if (Not(GameCall("MainEnergySupply"))) return(Stop());
+  if (!GameCall("MainEnergySupply")) return(Stop());
   Sound("Click");
-  if (Not(Vertical())) return(Stop());
+  if (!Vertical()) return(Stop());
   if(GetComDir()==COMD_Stop()) SetComDir(COMD_Up());
   else Stop(); 
   SetXDir(0); 
@@ -167,7 +167,8 @@ private ResumeTravel: // EndCall von Aktion Wait
   SetComDir(Local(2));
   return(1);
 
-private Automatic: // EndCall von Aktion Travel
+private func Automatic()// EndCall von Aktion Travel
+{ 
   // Keine Automatik, wenn ein Clonk mitfährt
   if (Passenger()) return(0); 
   // Zu einem wartenden Clonk hinfahren
@@ -175,26 +176,32 @@ private Automatic: // EndCall von Aktion Travel
   // Eigenständige Bewegung beginnen
   if (SelfTravel()) return(1);
   return(0);
+}
 
 private SelfTravel:
   // Nur wenn angehalten
-  if (Not(Equal(GetComDir(),COMD_Stop()))) return(0);
+  if (GetComDir()!=COMD_Stop()) return(0);
   // Eigenständige Bewegung je nach zugelassener Richtung beginnen
-  if ( And( Horizontal(), Not(Vertical()) ) ) SetComDir(COMD_Left());
-  if ( And( Vertical(), Not(Horizontal()) ) ) SetComDir(COMD_Up());
-  if ( And( Vertical(), Horizontal() ) ) SetComDir(COMD_Down());
+  if (Horizontal()&&!Vertical()) SetComDir(COMD_Left());
+  if (Vertical()&&!Horizontal()) SetComDir(COMD_Up());
+  if (Vertical()&&Horizontal())  SetComDir(COMD_Down());
   return(1);
 
-private SpeedToVertical:
+private func SpeedToVertical()
+{
   if (!GameCall("MainEnergySupply")) return(Stop());
   if (Vertical()&&Horizontal()) return(0);
   if (!Vertical()) return(0);
-  if (!SetVar(0,FindObject(0, -50,-1000,100,2000, OCF_CrewMember(),0,0,NoContainer()))) return(0);
-  if (GetComDir(Var(0))!=COMD_Stop()) return(0);
-  if (GetProcedure(Var(0)) eq "ATTACH") return(0);
+  //var pClonk = FindObject(0, -50,-1000,100,2000, OCF_CrewMember(),0,0,NoContainer());//Steht jemand da, der in den Aufzug will?
+  var pClonk = FindObject2(Find_InRect(-50,AbsY(Local(4)),100,AbsY(Local(5))),Find_OCF(OCF_CrewMember),Find_NoContainer(),Find_Not(Find_Func("IsAlien")));
+  if(!pClonk)//anscheinend nicht
+	  return(0);
+  if (GetComDir(pClonk)!=COMD_Stop()) return(0);//Clonk muss stoppen
+  if (GetProcedure(pClonk) eq "ATTACH") return(0);
   SetAction("SpeedToY");
-  SetLocal(2, Max( GetY(Var(0)), Sum(YTop(),-10) ) ); // Speed to target y or YTop
+  SetLocal(2, Max( GetY(pClonk), Sum(YTop(),-10) ) ); // Speed to target y or YTop
   return(1);
+}
 
 /* Aktion */
 
@@ -217,8 +224,10 @@ private SpeedToX: // StartCall von SpeedToX
 
 /* Status */
 
-private Passenger:
-  return( FindObject(0, -24,-13,48,16, OCF_CrewMember(),0,0,NoContainer()) );
+private func Passenger()
+{
+	return(FindObject2(Find_InRect(-24,-13,45,16),Find_OCF(OCF_CrewMember),Find_NoContainer(),Find_Not(Find_Func("IsAlien"))));
+}
 
 /* Initialisierung */
 

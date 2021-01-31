@@ -13,6 +13,7 @@ func Schlagable(){return(1);}
 /*Steuerung*/
 func ControlThrow()
 {
+	if(Contained()) return(0);
 	if(GetAction()ne"Walk"&&GetAction()ne"Swim") return(0);
 	if(!Angriff())
 		Graben(1);
@@ -20,6 +21,7 @@ func ControlThrow()
 }
 func ControlDig()
 {
+	if(Contained()) return(0);
 	if(FindObject2(Find_AtPoint(),Find_OCF(OCF_Grab())))
 		SetAction("Push",FindObject2(Find_AtPoint(),Find_OCF(OCF_Grab())));
 	return(1);

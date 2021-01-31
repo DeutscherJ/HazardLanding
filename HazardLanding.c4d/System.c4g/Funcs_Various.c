@@ -4,6 +4,11 @@
 static list;
 static enemyObjectsArray;
 
+global func IsOpenScenario()
+{
+	return(!GameCall("IsStationScenario") || FindObject2(Find_Func("IsArenaGoal")));
+}
+
 global func SetEnemyObject(pObj,iPlr)
 {
 	if(!enemyObjectsArray) enemyObjectsArray=[];

@@ -11,3 +11,5 @@ VertexY=1
 VertexFriction=20
 Timer=1
 TimerCall=Timer
+Rotate=1
+NoStabilize=1

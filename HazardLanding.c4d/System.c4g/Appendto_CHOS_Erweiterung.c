@@ -35,7 +35,10 @@ protected func OpenMenu()
 
   CreateMenu(GetID(), pClonk, 0, 0, 0, 0, 1);
   // Spielregeln
-  AddMenuItem("$CreateRules$", "OpenRuleMenu", CTFL, pClonk, 0,0, "$RuleInfo$");
+  if(!GameCall("OpenScenario"))
+	AddMenuItem("$CreateRules$", "OpenRuleMenu", CTFL, pClonk, 0,0, "$RuleInfo$");
+  else
+	AddMenuItem("$CreateRules$", "OpenOpenRuleMenu", CTFL, pClonk, 0,0, "$RuleInfo$");
   // Dunkelheit
   if(IsDark())
     AddMenuItem("%s", "OpenDarknessMenu", DARK, pClonk,0,0,"$DarknessChose$");
@@ -207,7 +210,7 @@ func GoalReady()
 			var goal = FindObject(goalID);
 			if(!goal) goal = CreateObject(goalID,5,5,-1);
 			if(goalBool==2)
-				LocalN("isOptional",goal) = 1;
+				goal->~SetOptional();
 		}
 		i++;
 	}
@@ -220,14 +223,14 @@ protected func SetGoalStatus(int status,int goalArrayPos)
   addGoalArray[goalArrayPos] = status;
   var goalID = aGoals[goalArrayPos];
   var i;
-  if(!DefinitionCall(goalID,"PossibleOptionalGoal"))//Ist das Ziel nicht optional? Dann werden alle anderen Ziele gelöscht oder optional gesetzt.
+  if(!DefinitionCall(goalID,"PossibleOptionalGoal") && !DefinitionCall(goalID,"AdditionalGoal"))//Ist das Ziel nicht optional und kann auch nicht zusätzlich gewählt werden? Dann werden alle anderen Ziele gelöscht oder optional gesetzt.
   {
 	for(var goal in aGoals)
 	{
 		if(goal!=goalID)
 		{
 			if(addGoalArray[i]==1 && DefinitionCall(goal,"PossibleOptionalGoal"))
-				addGoalArray[i] = 2;
+				addGoalArray[i] = 2;//Optional
 			if(addGoalArray[i]==1)
 				addGoalArray[i] = 0;
 		}
@@ -236,11 +239,11 @@ protected func SetGoalStatus(int status,int goalArrayPos)
   }
   else
   {
-	for(var goal in aGoals)
+	for(var goal in aGoals)//Alle bisher hinzugefügten Ziele durchgehen, Wenn ein Ziel nicht optional oder zusätzlich gewählt werden kann, wird es deaktiviert
 	{
 		if(goal!=goalID)
 		{
-			if(addGoalArray[i]==1 && !DefinitionCall(goal,"PossibleOptionalGoal"))
+			if(addGoalArray[i]==1 && (!DefinitionCall(goal,"PossibleOptionalGoal")&&!DefinitionCall(goal,"AdditionalGoal")))
 				addGoalArray[i] = 0;
 		}
 		i++;
@@ -265,4 +268,52 @@ protected func CreateGoal(id idGoal, int iScore)
 	
   // Normales Menü öffnen
   OpenMenu();
+}
+
+/*Regelwahl für Offene Szenarien*/
+
+protected func OpenOpenRuleMenu(id dummy, int iSelection)
+{
+  Chooser_Cat = 524288;
+  var pClonk = GetCursor(iChoosingPlr);
+  // Menü aufmachen
+  CreateMenu(GetID(), pClonk);
+  // Regeln einfügen
+  for(var i=0, idR, def, j, check ; idR = GetDefinition(i, Chooser_Cat) ; i++)
+    if(!GetLength(FindObjects(Find_ID(idR))) && !DefinitionCall(idR,"Unchoosable"))
+      {
+      def = CreateObject(idR, 0,0, -1);
+      if(aRules[i])
+        {
+        SetGraphics("Chosen", def, WPCH, 1, GFXOV_MODE_Picture);
+        SetObjDrawTransform(650,0,5000,0,650,5000, def, 1);
+        }
+      AddMenuItem("%s", "ChangeRuleConf", idR, pClonk, 0, i, 0, 4, def);
+      if(i == iSelection)
+        check = true;
+      if(!check)
+        j++;
+      RemoveObject(def);
+      }
+  // Fertig
+  AddMenuItem("$Finished$", "OpenMenu", CHOS, pClonk,0,0,0,2,3);
+  // Menüeintrag auswählen
+  SelectMenuItem(j, pClonk);
+}
+
+protected func ChangeRuleConf(id dummy, int i)
+{
+  // Regel wurde ausgewählt
+  if(!aRules[i])
+    aRules[i] = true;
+  // Regel wurde abgewählt
+  else
+    aRules[i] = false;
+  // Geräusch
+  Sound("Grab", 1,0,0,iChoosingPlr+1);
+  // Regelmenü wieder aufmachen
+  if(!IsOpenScenario())
+	OpenRuleMenu(0, i);
+  else
+	OpenOpenRuleMenu(0, i);
 }

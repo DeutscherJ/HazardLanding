@@ -2,14 +2,14 @@
 
 #strict
 
-public func ExplodeSize() 
-{ 
-  return(18); 
-}
-
 protected func Hit()
 {
-  Explode(ExplodeSize());
+  for(var r=0; r<360; r+=30)
+  {
+	  CreateNanite(r,1);
+  }
+  RemoveObject();
+  return(1);
 }
 
 /* Kann in der Chemiefabrik hergestellt werden */

@@ -2,7 +2,7 @@
 id=ARP3
 Version=4,9,8
 Name=ArrowPack
-Category=C4D_Object|C4D_SelectMaterial|C4D_SelectKnowledge|C4D_SelectHomebase
+Category=C4D_Object
 MaxUserSelect=5
 Width=8
 Height=7
@@ -14,5 +14,4 @@ Value=10
 Mass=12
 Components=WOOD=2
 Picture=8,0,64,64
-Rebuy=1
 Collectible=1

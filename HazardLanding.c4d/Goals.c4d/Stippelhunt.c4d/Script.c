@@ -3,8 +3,9 @@
 #strict
 #include GOAL
 
-func PossibleOptionalGoal(){return(1);}
 local isOptional;
+func SetOptional(){return(isOptional=1);}
+func PossibleOptionalGoal(){return(1);}
 
 static stippelArray, stippelNumArray, deletedStippel;
 

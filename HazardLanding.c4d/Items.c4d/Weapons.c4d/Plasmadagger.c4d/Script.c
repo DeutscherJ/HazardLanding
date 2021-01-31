@@ -46,7 +46,7 @@ func Anim(r,x,y,pClonk)
 
 func AnimSchedule()
 {
-	if(!Contained()) return(0);
+	if(!Contained()) 					return(0);
 	if(Contents(0,Contained())!=this()) return(0);
 	var action = GetAction(Contained());
 	if(action ne "Walk" && action ne "Jump" && action ne "AlternativeBeat")
@@ -56,8 +56,27 @@ func AnimSchedule()
 	CreateParticle("Plasma",xLast,yLast,Sin(rLast,40),-Cos(rLast,40)*dir,RandomX(-5,5)+80,RGBa(180,180,255,50));
 	return(1);
 }
-/*
+
+func Entrance(pContained)
+{
+	if(Contents(0,pContained)!=this()) return(0);
+	return(ShiftedTo(pContained));
+}
+
 func ShiftedTo(pClonk)
 {
-	if(
+	if(!Contained()) 					return(0);
+	if(!GetAlive(pClonk)) 				return(0);
+	Sound("PlasmaStatic",0,this(),10,0,1);
+	return(1);
+}
+func Unshifted(pClonk)
+{
+	Sound("PlasmaStatic",0,this(),0,0,-1);
+	return(1);
+}
+func Departure()
+{
+	Sound("PlasmaStatic",0,this(),0,0,-1);
+	return(1);
 }

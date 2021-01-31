@@ -3,8 +3,10 @@
 #strict
 #include GOAL
 
-func PossibleOptionalGoal(){return(1);}
 local isOptional;
+func SetOptional(){return(isOptional=1);}
+func PossibleOptionalGoal(){return(1);}
+
 static dataCubeArray, iDataCubeCollectionType;
 
 func Destruction()
@@ -20,6 +22,7 @@ protected func Initialize()
 	SetPosition();
 	if(!dataCubeArray)
 		dataCubeArray=[5,5,5];
+	if(FindObject(CHOS)) return(0);//Erstmal daraf warten, dass fertig gewählt wurde
   // Keine Datenwürfel Da?
   if(IsFulfilled())
 	CreateDataCubes();
@@ -41,7 +44,7 @@ func LateInit()
 func ConfigurableInChooserMenu(){return(1);}
 func CooseMenu(pClonk,pChooser)
 {
-	CreateMenu(GetID(), pClonk, 0, 0, "Anzahl platzierter Stippel", 0, 1);
+	CreateMenu(GetID(), pClonk, 0, 0, "Datenwürfelplatzierung", 0, 1);
 	var dataCube = [_DC1,_DC2,_DC3];
 	for(var i = 0; i<=2; i++ )
 	{
@@ -88,13 +91,11 @@ func Ready(pClonk)
 
 public func CreateDataCubes()
 {
-	var stripeNum = dataCubeArray[0];
-	var yStripe = LandscapeHeight() / stripeNum ;
-	  
-	for(var k=stripeNum;k;k--)
+	var problemCounter = 0;
+	for(var missingWhites = dataCubeArray[0];missingWhites && problemCounter<100;missingWhites--)
 	{
-	    var yMax = yStripe * k;
-	    var yMin = yStripe * (k-1);
+	    var yMax = LandscapeHeight()-50;
+	    var yMin = 50;
 		
 		//Weiße Würfel auf der Erde platzieren
 		var cube = CreateObject(_DC1,0,0,-1);
@@ -108,7 +109,10 @@ public func CreateDataCubes()
 			if(GetMaterial(GetX(cube),GetY(cube)) == Material("Wall"))
 				PlaceHard(cube,1);
 			if(GetMaterial(GetX(cube),GetY(cube)) != Material("Wall"))
+			{
 				problemBla=1;
+				problemCounter ++;
+			}
 			else
 				problemBla=0;
 		}
@@ -148,7 +152,7 @@ public func CreateDataCubes()
 		//Log("%d Würfel 2",missingGreens+missingReds);
 		
 		/*Falls dann noch Datenwürfel versteckt werden müssen, diese im freien Platzieren*/
-		while((missingReds+missingGreens)>0) 
+		while((missingReds+missingGreens)>0 && problemCounter<200) 
 		{
 			if(missingGreens>0)
 			{
@@ -173,13 +177,21 @@ public func CreateDataCubes()
 				if(GetMaterial(GetX(cube),GetY(cube)) == Material("Wall"))
 					PlaceHard(cube,1);
 				if(GetMaterial(GetX(cube),GetY(cube)) != Material("Wall"))
+				{
+					problemCounter ++;
 					problemBla=1;
+				}
 				else
 					problemBla=0;
 			}
 		}
 	}
-	
+	if(problemCounter>=200)
+	{
+		PlaceObjects(_DC1,missingWhites,Material("Earth"));
+		PlaceObjects(_DC2,missingGreens,Material("Earth"));
+		PlaceObjects(_DC3,missingReds,"GBackSolid");
+	}
 	return(1);
 }
 
@@ -187,6 +199,7 @@ public func CreateDataCubes()
 
 public func IsFulfilled()
 {
+  if(FindObject(CHOS)) return(0);
   if(!ObjectCount2(Find_Func("DataCube"))||isOptional) return(1);
   return(0);
 }
