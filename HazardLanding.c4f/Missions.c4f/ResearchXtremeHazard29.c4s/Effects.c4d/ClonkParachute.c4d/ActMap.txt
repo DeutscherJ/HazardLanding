@@ -1,0 +1,16 @@
+[Action]
+Name=Attach
+Procedure=ATTACH
+Length=1
+Delay=1
+Facet=0,0,105,96
+EndCall=Check
+NextAction=Attach
+
+[Action]
+Name=Down
+Length=0
+Procedure=NONE
+Delay=3
+Facet=0,30,42,30
+EndCall=Remove

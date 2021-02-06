@@ -1,0 +1,11 @@
+[DefCore]
+id=ST5_
+Name=Stippelzähler
+Category=524289
+MaxUserSelect=1
+Width=1
+Height=1
+Value=1
+TimerCall=Execute
+Picture=0,0,11,14
+ 

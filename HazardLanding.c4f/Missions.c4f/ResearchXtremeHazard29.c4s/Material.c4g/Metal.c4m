@@ -1,0 +1,8 @@
+[Material]
+Name=Metal
+Color=40,40,40,10,10,10,70,70,70
+Shape=0
+Density=50
+Friction=100
+MaxAirSpeed=100
+MaxSlide=250

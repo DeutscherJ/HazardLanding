@@ -1,0 +1,8 @@
+[DefCore]
+id=_CLC
+Name=DeadClonk
+Category=1
+Width=17
+Height=10
+Offset=-15,-15
+ColorByOwner=1

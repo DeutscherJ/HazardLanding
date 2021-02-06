@@ -1,0 +1,18 @@
+[PlayerInfoList]
+LastPlayerID=1
+
+  [Client]
+  ID=0
+  Flags=Initial
+
+    [Player]
+    Name="Indigene"
+    Filename="ScriptPlr-1.c4p"
+    Flags=Joined|AttributesFixed|NoScenarioInit|NoEliminationCheck
+    ID=1
+    Type=Script
+    Color=16777215
+    OriginalColor=16711680
+    SavgamePlayer=1
+    GameNumber=1
+    GameJoinFrame=2

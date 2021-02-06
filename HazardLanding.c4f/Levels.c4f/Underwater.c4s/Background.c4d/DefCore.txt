@@ -1,0 +1,9 @@
+[DefCore]
+id=_BGL
+Name=Background
+Version=4,9,1,4
+Category=3145729
+Width=1000
+Height=500
+Picture=0,0,1000,400
+ColorByOwner=1

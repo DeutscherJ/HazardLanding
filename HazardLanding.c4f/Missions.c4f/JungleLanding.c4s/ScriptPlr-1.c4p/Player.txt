@@ -1,0 +1,14 @@
+[Player]
+Name=Indigene Stämme
+Comment=muhaha
+Rank=13
+RankName=Kaiser
+Score=1016722
+Rounds=1103
+RoundsWon=807
+RoundsLost=296
+ExtraData=1;FSE_Skill=i1
+
+[Preferences]
+Control=0
+AutoContextMenu=0

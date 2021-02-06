@@ -1,0 +1,17 @@
+[DefCore]
+id=A15B
+Name=MG-Magazin
+Version=4,9,1,4
+Category=2576
+MaxUserSelect=10
+Width=7
+Height=7
+Offset=-3,-3
+Value=25
+Mass=10
+Picture=7,0,35,35
+Vertices=1
+VertexY=3
+VertexFriction=100
+Collectible=1
+Rebuy=1 

@@ -1,0 +1,11 @@
+[Teams]
+AllowHostilityChange=1
+AllowTeamSwitch=0
+
+	[Team]
+	id=1
+	Name=Linke Oberfläche
+	
+	[Team]
+	id=2
+	Name=Rechte Oberfläche

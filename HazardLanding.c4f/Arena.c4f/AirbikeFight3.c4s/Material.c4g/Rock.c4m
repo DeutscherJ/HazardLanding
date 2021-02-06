@@ -1,0 +1,12 @@
+[Material]
+Name=Rock
+Color=96,96,96,116,116,116,136,136,136
+Shape=3
+Density=50
+Friction=100
+BlastFree=1
+Blast2Object=ROCK
+Blast2ObjectRatio=75
+MaxAirSpeed=100
+MaxSlide=250
+ 

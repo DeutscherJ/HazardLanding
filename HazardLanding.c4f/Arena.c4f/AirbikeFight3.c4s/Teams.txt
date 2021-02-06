@@ -1,0 +1,19 @@
+[Teams]
+LastTeamID=3
+
+  [Team]
+  id=1
+  Name=Team Rot(links)
+  Color=15990784
+
+  [Team]
+  id=3
+  Name=Team Gelb(mitte)
+  PlayerCount=1
+  Players=1
+  Color=16577564
+
+  [Team]
+  id=2
+  Name=Team Grün(rechts)
+  Color=51200

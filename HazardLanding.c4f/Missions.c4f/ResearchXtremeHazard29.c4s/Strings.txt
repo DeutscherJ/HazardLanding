@@ -1,0 +1,17 @@
+MCLK_PrefCombo
+MCLK_QS
+Scoreboard
+Path %d does not exist.
+Tunnel-Smooth
+Granite-Rough
+Moff
+Miffel
+Stippel
+Off
+On
+End2
+Rail
+RemoveObject()
+Part1
+Part2
+Part3

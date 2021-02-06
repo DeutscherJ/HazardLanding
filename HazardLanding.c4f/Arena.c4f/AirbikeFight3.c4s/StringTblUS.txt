@@ -1,0 +1,6 @@
+TeamLeft=Team Red(links)
+TeamRight=Team Green(rechts)
+Relaunch=%s has left %d Relaunches.
+Killed=%s (%d Relaunches) was killed from %s
+Selfkill=%s (%d Relaunches) has done a selfkill
+DiedWhileProtect=%s died while he was protected by the Spawnprotect

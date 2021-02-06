@@ -1,0 +1,6 @@
+TeamLeft=Squadra Red(A sinistra)
+TeamRight=Squadra Green(Destra)
+Relaunch=%s ha lasciato %d Relaunches.
+Killed=%s(%d Relaunches) è stato ucciso da %s
+Selfkill=%s(%d Relaunches) ha svolto un selfkill
+DiedWhileProtect=%s è morto mentre era protetto dalla Spawnprotezione

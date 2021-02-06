@@ -1,0 +1,17 @@
+[DefCore]
+id=_DIS
+Version=4,9,5
+Name=DataDisc
+Category=16
+Width=8
+Height=7
+Offset=-4,-3
+Value=25
+Mass=5
+Picture=0,0,45,42
+Vertices=1
+VertexY=3
+VertexFriction=100
+BorderBound=1
+Collectible=1
+ 

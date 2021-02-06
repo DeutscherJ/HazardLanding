@@ -1,0 +1,15 @@
+[Teams]
+AllowHostilityChange=1
+AllowTeamSwitch=0
+
+	[Team]
+	id=1
+	Name=Unten Links
+	
+	[Team]
+	id=2
+	Name=Unten Rechts Höhle
+	
+	[Team]
+	id=3
+	Name=Mitte Gipfel

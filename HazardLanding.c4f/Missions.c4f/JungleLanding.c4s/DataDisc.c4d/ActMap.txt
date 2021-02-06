@@ -1,0 +1,8 @@
+[Action]
+Name=Spin
+Procedure=NONE
+NextAction=Spin
+Delay=3
+Length=12
+Facet=0,43,8,7
+

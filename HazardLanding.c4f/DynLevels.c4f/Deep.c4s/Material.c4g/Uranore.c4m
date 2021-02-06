@@ -1,0 +1,13 @@
+[Material]
+Name=Uranore
+Color=170,190,170,190,210,190,210,230,210
+Shape=3
+Density=50
+Friction=100
+BlastFree=1
+Blast2Object=SURO
+Blast2ObjectRatio=80
+MaxAirSpeed=100
+MaxSlide=1
+Placement=50
+TextureOverlay=Rough

@@ -1,0 +1,11 @@
+[DefCore]
+id=RAIN
+Version=4,9,1,3
+Name=Regen
+Category=4
+Width=100
+Height=10
+Mass=1
+Picture=0,0,40,40
+Vertices=0
+ 

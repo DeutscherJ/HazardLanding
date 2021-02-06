@@ -1,0 +1,15 @@
+[DefCore]
+id=CFAL
+Name=Fallschirm
+Category=18960
+Width=105
+Height=96
+Offset=-52,-48
+Value=0
+Mass=0
+Components=FALL=1;
+Picture=0,0,105,96
+Vertices=4
+VertexX=2,50,-50,0
+VertexY=48,-30,-30,-48
+VertexFriction=20

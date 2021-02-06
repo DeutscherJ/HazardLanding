@@ -1,0 +1,9 @@
+[DefCore]
+id=SMON
+Name=Ecatar
+Version=4,9,%
+Category=3145729
+Width=128
+Height=128
+Offset=-64,-64
+Picture=0,0,128,128

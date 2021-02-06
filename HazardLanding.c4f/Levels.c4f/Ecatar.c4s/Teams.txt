@@ -1,0 +1,27 @@
+[Teams]
+AllowHostilityChange=1
+AllowTeamSwitch=0
+
+	[Team]
+	id=1
+	Name=Linke Oberfläche
+	
+	[Team]
+	id=2
+	Name=Rechte Oberfläche
+	
+	[Team]
+	id=3
+	Name=Linke Höhle
+	
+	[Team]
+	id=4
+	Name=Rechte Höhle
+	
+	[Team]
+	id=5
+	Name=Linker Erdkern
+	
+	[Team]
+	id=6
+	Name=Rechter Erdkern

@@ -1,0 +1,1 @@
+Zeigt anstelle des Geldes die Anzahl der noch lebenden Stippel an.

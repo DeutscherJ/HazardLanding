@@ -1,0 +1,11 @@
+[Teams]
+AllowHostilityChange=0
+AllowTeamSwitch=0
+
+	[Team]
+	id=1
+	Name=$TeamLeft$
+	
+	[Team]
+	id=2
+	Name=$TeamRight$

@@ -1,0 +1,7 @@
+TeamLeft=Team Rot(links)
+TeamRight=Team Grün(rechts)
+TeamMiddle=Team Gelb(mitte)
+Relaunch=%s hat noch %d Relaunches.
+Killed=%s(%d Relaunches) wurde von %s gekillt
+Selfkill=%s(%d Relaunches) hat ein Selfkill begangen
+DiedWhileProtect=%s starb, während er unter dem Spawnschutz stand
