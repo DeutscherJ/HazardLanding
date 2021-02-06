@@ -31,3 +31,4 @@ func ContentAngle(contentID)
 	if(contentID==MF5B) return(90);//Moff drehen
 	return(0);
 }
+public func HazardBuilding(){return(2);}

@@ -231,12 +231,14 @@ func Suche()
 {
   Local(0)=FindStippelTargetDistance(350,this());
   
+  /* Flagge klauen ist auskommentiert. Das war irgendwie zu Evil
   Var(0)=FindObject(FLAG,0,0,-1,-1,0,0,0,NoContainer());
 
   if(Var(0) && FindObject(FGRV))//Flagge gefunden und abnehmbar?
 	if(!FindObject(MI5B,0,0,0,0,0,"Fliegen",Var(0)))//Wurde diese noch nicht geklaut?
 		if(!Random(ObjectDistance(Var(0)))) Local(0)=Var(0);//dann klau diese
-
+ */
+ 
   //Var(0)=FindObject(KG5B);
   //
   //if(Var(0)) if(Random(ObjectDistance(Var(0)))<10) Local(0)=Var(0);

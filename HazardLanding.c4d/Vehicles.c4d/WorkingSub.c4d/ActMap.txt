@@ -20,6 +20,16 @@ Reverse=1
 Sound=Submarine
 
 [Action]
+Name=Walk
+Procedure=NONE
+Directions=1
+Length=1
+Delay=0
+Facet=6960,0,116,65
+NextAction=Walk
+InLiquidAction=Swim2Left
+
+[Action]
 Name=Swim2Left
 Procedure=SWIM
 Directions=1

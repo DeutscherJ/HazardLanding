@@ -3,7 +3,11 @@
 #strict
 
 local iterations;
-
+func Initialize()
+{
+	SetAction("Exist");
+	return(1);
+}
 func Timer()
 {
 	SetSpeed(Sin(GetR(),20),-Cos(GetR(),20));

@@ -11,3 +11,4 @@ protected func Hit()
 {
   Sound("RockHit3");
 }
+func Ressource(){return(1);}

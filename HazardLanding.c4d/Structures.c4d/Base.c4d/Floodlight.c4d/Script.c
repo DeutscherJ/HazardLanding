@@ -64,3 +64,5 @@ public func SetRotation(int iR, int iOwn)
 
 // Kein Kran darf mich schnappen!
 public func NoCrane() { return(1); }
+public func HazardBuilding(){return(2);}
+public func BasicObject(){return(1);}

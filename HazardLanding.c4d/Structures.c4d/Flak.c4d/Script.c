@@ -7,6 +7,7 @@ local Crosshair;
 local Rifle; // aus welchem Rohr wir gerade ballern
 local basement;
 
+public func HazardBuilding(){return(2);}
 protected func Construction()
 {
   basement = CreateObject(BS16,0,+8,GetOwner());

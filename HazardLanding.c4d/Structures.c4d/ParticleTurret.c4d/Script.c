@@ -101,3 +101,4 @@ public func ControlThrow()
     [$TxtFire$|Image=TAN2:0]
 	_inherited(...);
 }
+public func HazardBuilding(){return(2);}

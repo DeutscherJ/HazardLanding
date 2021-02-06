@@ -188,8 +188,8 @@ public func CreateDataCubes()
 	}
 	if(problemCounter>=200)
 	{
-		PlaceObjects(_DC1,missingWhites,Material("Earth"));
-		PlaceObjects(_DC2,missingGreens,Material("Earth"));
+		PlaceObjects(_DC1,missingWhites,"Earth");
+		PlaceObjects(_DC2,missingGreens,"Earth");
 		PlaceObjects(_DC3,missingReds,"GBackSolid");
 	}
 	return(1);

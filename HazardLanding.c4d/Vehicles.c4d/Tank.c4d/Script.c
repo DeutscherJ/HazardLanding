@@ -350,6 +350,7 @@ func Glimmering(){
   return(1);
 }
 
+func IsVehicleProduct(){return(1);}
 func IsCEVehilce() {return(1);}
 //Schedule("CreateObject(GOLD) -> Explode(10)",1,100)
 global func PanzerKaputt(){CreateObject(CETA) -> Schedule("CreateObject(GOLD) -> Explode(10)",1,100); return(1);}

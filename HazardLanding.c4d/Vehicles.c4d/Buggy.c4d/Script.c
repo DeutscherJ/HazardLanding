@@ -4,6 +4,7 @@
 #include L_TK
 //#include WEPN
 
+func IsVehicleProduct(){return(1);}
 local pShooter;
 
 func Initialize() {

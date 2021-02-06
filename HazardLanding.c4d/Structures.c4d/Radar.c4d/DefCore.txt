@@ -16,6 +16,7 @@ Vertices=1
 VertexY=25
 VertexFriction=100
 LineConnect=32
+Construction=1 
 
 [Physical]
 Energy=100000 

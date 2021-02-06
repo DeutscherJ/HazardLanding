@@ -4,9 +4,10 @@
 
 local iCurrentInstrument, pTool;
 
+func IsVehicleProduct(){return(1);}
 func Initialize()
 {
-	SetAction("Swim2Left");
+	SetAction("Walk");
 	var pEnter= CreateObject(ENTR);
 	pEnter-> SetAction("Attach",this());
 //	iCurrentInstrument=PBAS;

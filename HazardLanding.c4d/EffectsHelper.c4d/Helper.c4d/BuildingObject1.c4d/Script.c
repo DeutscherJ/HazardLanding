@@ -141,4 +141,5 @@ public InfoBarPos:   return(0);
 public InfoBarSize:  return(2);
 public Repairable:   return(1);
 public GetMaxDamage: return(100);
+public func HazardBuilding(){return(1);}
 

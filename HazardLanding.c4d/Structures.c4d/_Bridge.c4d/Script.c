@@ -69,4 +69,3 @@ public Destroy:
 
 public GetMaxDamage: return(75);
 public IsVehicleProduct: return(1);
-

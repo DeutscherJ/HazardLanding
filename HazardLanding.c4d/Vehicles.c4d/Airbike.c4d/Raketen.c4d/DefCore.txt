@@ -15,3 +15,4 @@ VertexY=5
 VertexFriction=100
 Collectible=1
 Rebuy=1 
+Components=METL=1;FLNT=2;

@@ -1,7 +1,7 @@
 /*- Das Seil als aufnehmbares Objekt-*/
 #strict
 local Rope,PushPull,Objekt,Mode;
-
+func BasicObject(){return(1);}
 func RopeAskChangeLength (len, obj) {
   if (obj != Rope) return ();
   if (!(GetOCF(Contained ()) & OCF_CrewMember())) {

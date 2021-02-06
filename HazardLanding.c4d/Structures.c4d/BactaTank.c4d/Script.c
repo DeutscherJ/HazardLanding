@@ -132,3 +132,4 @@ func Incineration()
 	Destroy();
 	return(1);
 }
+public func HazardBuilding(){return(2);}
