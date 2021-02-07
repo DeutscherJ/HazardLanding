@@ -1,2 +1,0 @@
-DE:Warnleuchte
-US:Alarm

@@ -82,7 +82,13 @@ protected func InitializePlayer(int iPlr, int iX, int iY, object pBase, int iTea
   RelaunchPlayer(iPlr, GetCrew(iPlr), 0, iTeam);
 }
 
-public func RelaunchPlayer(int iPlr, object pCrew, object pKiller, int iTeam)
+func LatePlayerInit(iPlr)
+{
+	RelaunchPlayer(iPlr, GetCrew(iPlr), 0, GetPlayerTeam(iPlr),0,1);
+	return(1);
+}
+
+public func RelaunchPlayer(int iPlr, object pCrew, object pKiller, int iTeam,aidstest,bool lateInitPar)
 {  
   // Kein ordentlicher Spieler?
   if(GetOwner(pCrew) == NO_OWNER || iPlr == NO_OWNER)
@@ -95,25 +101,26 @@ public func RelaunchPlayer(int iPlr, object pCrew, object pKiller, int iTeam)
   var iY=RelaunchPosition(iTeam,1);
   
   // Clonk tot?
-  if(!GetAlive(pCrew))
+  if(!GetAlive(pCrew) || lateInitPar)
   {
-    pCrew = RelaunchClonk(iPlr, pCrew);
+    if(!GetAlive(pCrew)) pCrew = RelaunchClonk(iPlr, pCrew);
 	var bike= CreateObject(AB5B,iX,iY,iPlr);
 	Enter(bike,pCrew);
 	bike-> ActivateEntrance(pCrew);
 	Local(5,pCrew)=bike;
+	
+	// Lecker Waffen
+	if(!FindObject(IGIB))
+	{
+	  var wpn = CreateContents(PIWP, pCrew);
+	  wpn->DoAmmo(wpn->GetFMData(FM_AmmoID),wpn->GetFMData(FM_AmmoLoad));
+	  DoAmmo(STAM, 50, pCrew);
+	  DoAmmo(GRAM, 10, pCrew);
+	}
   }
 	
   for(var i=0 ; pCrew = GetCrew(iPlr, i) ; i++)
     {
-    // Lecker Waffen
-    if(!FindObject(IGIB))
-    {
-      var wpn = CreateContents(PIWP, pCrew);
-      wpn->DoAmmo(wpn->GetFMData(FM_AmmoID),wpn->GetFMData(FM_AmmoLoad));
-      DoAmmo(STAM, 50, pCrew);
-      DoAmmo(GRAM, 10, pCrew);
-	}
     if(Contained(pCrew))
       SetPosition(iX, iY, Contained(pCrew));
     else
@@ -164,7 +171,7 @@ public func RelaunchPosition(int iTeam,bool fY)
 }
 
 func MainEnergySupply(){return(1);}
-
+func IsStationScenario(){return(1);}
 //global func GetPosition(){return(Format("%d, %d,%d",GetID(),GetX(),GetY()));}
 global func OP(pObj)
 {

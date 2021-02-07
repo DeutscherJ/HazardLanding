@@ -1,1 +1,0 @@
-Der Standardtransporter für vertikale Schächte.

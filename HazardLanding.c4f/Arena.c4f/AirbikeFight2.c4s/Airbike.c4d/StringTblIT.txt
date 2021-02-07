@@ -1,7 +1,0 @@
-NotAble=%s non è in grado di utilizzare questo
-First=Salire prima
-MG=MG
-Rockets=Razzi
-Bombs=Bombe
-AB=Bombe atomica
-Nothing=Nulla

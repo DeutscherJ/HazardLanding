@@ -26,3 +26,9 @@ YourBrain=Your brain
 Nothing=Nothing
 Freezer=The freezer
 Space=The space
+
+Auto=Automatic fire
+Single=Single shots
+TxtFire=Fire!
+TxtLeft=Aim left
+TxtRight=Aim right

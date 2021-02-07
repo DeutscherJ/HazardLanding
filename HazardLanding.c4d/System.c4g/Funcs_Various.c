@@ -4,9 +4,24 @@
 static list;
 static enemyObjectsArray;
 
+global func IsArenaScenario()
+{
+	if(FindObject2(Find_Func("IsArenaGoal")))
+		return(1);
+	var pChoose = FindObject2(Find_ID(CHOS));
+	if(pChoose)
+	{
+		for(var goalID in LocalN("aGoals",pChoose))
+		{
+			if(DefinitionCall(goalID,"IsArenaGoal")) return(1);
+		}
+	}
+	return(0);
+}
+
 global func IsOpenScenario()
 {
-	return(!GameCall("IsStationScenario") || FindObject2(Find_Func("IsArenaGoal")));
+	return(!GameCall("IsStationScenario") && !FindObject2(Find_Func("IsArenaGoal")));
 }
 
 global func SetEnemyObject(pObj,iPlr)

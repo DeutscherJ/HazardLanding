@@ -35,9 +35,9 @@ map Arctic {
     Earth { mat=Ice; tex=Flare3; };
     Snow { };
     //Damit der Schnee nicht direkt am Wasser angrenzt
-    overlay { algo=border; a=2; b=2; mat=Ice; tex=Flare2; turbulence=0; sub=0; };
+    overlay { algo=border; a=3; b=3; mat=Ice; tex=Flare2; turbulence=0; sub=0; };
     //Über dem Wasser liegt aber Schnee
-    overlay { algo=border; b=2; hgt=25; b=0; mat=Snow; tex=Smooth; turbulence=1000; sub=0; };
+    //overlay { algo=border; b=2; hgt=25; b=0; mat=Snow; tex=Smooth; turbulence=1000; sub=0; };
     };
 
   // Meeresgrund

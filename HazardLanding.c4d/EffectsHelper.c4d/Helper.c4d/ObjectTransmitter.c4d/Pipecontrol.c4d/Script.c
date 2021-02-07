@@ -27,17 +27,17 @@ func EjectionCall(iObjNum,pFrom)
 			if(Contained(pObj)==pFrom) return(0);//Anscheinend hat das Objekt die Hütte doch nicht verlassen
 	if(!pObj)//Wurde das Objekt verkauft oder zerstört?
 	{
-		if(fDebugRohrpost) Log("Gegenstand %d verkauft",iObjNum);
+		if(Debug_Rohrpost) Log("Gegenstand %d verkauft",iObjNum);
 	}
 		
 	if(FindInArray(pOriginalObjects,iObjNum))//Handelt es sich um ein Original?
 	{
 		var iOriginalNum = FindInArray(pOriginalObjects,iObjNum);
 		iOriginalNum = iOriginalNum[0];
-		if(fDebugRohrpost) Log("Nehme Original %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
+		if(Debug_Rohrpost) Log("Nehme Original %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 		DeleteCopies(iOriginalNum);//Dann lösche überall sonst die Kopien
 		pOriginalObjects = DeleteRow(pOriginalObjects,iOriginalNum);//Lösche den Verweis aufs Originalobjekt
-		if(fDebugRohrpost) Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
+		if(Debug_Rohrpost) Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 	}
 	else//Ansonsten muss es sich wohl um eine Kopie handeln
 	{
@@ -52,11 +52,11 @@ func EjectionCall(iObjNum,pFrom)
 			Sound("Error");
 		}
 		
-		if(fDebugRohrpost) Log("Nehme Kopie %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
+		if(Debug_Rohrpost) Log("Nehme Kopie %s: %d Originale, %d Kopien",GetName(pObj),GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 		pOriginalObjects = DeleteRow(pOriginalObjects,iOriginalRow);//Lösche den Verweis aufs Originalobjekt
-		if(fDebugRohrpost) Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
+		if(Debug_Rohrpost) Log("Nach dem Löschen: %d Originale, %d Kopien",GetLength(pOriginalObjects),GetLength(pCopiedObjects));
 		
-		Log("Kopie %s , Original %s",GetName(pObj),GetName(pOriginal));
+		if(Debug_Rohrpost) Log("Kopie %s , Original %s",GetName(pObj),GetName(pOriginal));
 		
 		if(pOriginal && pObj)//Ansonsten wird die Kopie mit dem Original ersetzt
 		{
@@ -74,7 +74,7 @@ func EjectionCall(iObjNum,pFrom)
 		}
 		if(!pObj && pOriginal)
 		{
-			Log("Kopie wurde verkauft, lösche originales %s",GetName(pOriginal));
+			if(Debug_Rohrpost) Log("Kopie wurde verkauft, lösche originales %s",GetName(pOriginal));
 			RemoveObject(pOriginal);
 		}
 		DeleteCopies(iOriginalRow);//Lösche alle Kopien
@@ -121,12 +121,12 @@ func CollectionCall(iObjNum,pFrom)
 		return(0);
 	}
 	var i = SearchOriginalOfCopy(iObjNum);
-	if(fDebugRohrpost) Log("Aufnahme %d",i);
+	if(Debug_Rohrpost) Log("Aufnahme %d",i);
 	if(i==-1)
 	{
 		//Message("Objekt nicht aufgelistet",pFrom);
 		CopyObject(pObj,pFrom);
-		if(fDebugRohrpost) Log("%s Aufgenommen in %s",GetName(pObj),GetName(pFrom));
+		if(Debug_Rohrpost) Log("%s Aufgenommen in %s",GetName(pObj),GetName(pFrom));
 		return(1);
 	}
 	//Message("Objekt schon aufgelistet",pFrom);
@@ -143,7 +143,7 @@ func CopyObject(pObj,pFrom)
 		Message("%s wird nicht transportiert.",pFrom,GetName(pObj));
 		return(0);
 	}
-	if(fDebugRohrpost) Log("%s Kopiert in %s",GetName(pObj),GetName(pFrom));
+	if(Debug_Rohrpost) Log("%s Kopiert in %s",GetName(pObj),GetName(pFrom));
 	pOriginalObjects = AddElement(pOriginalObjects,ObjectNumber(pObj)); 
 	//Log("A%d | %d",GetLength(pOriginalObjects),GetLength(pHouseArray)); 
 	var iHouseCount = GetLength(pHouseArray);
@@ -212,7 +212,7 @@ func CheckHouses()
 
 func HouseDeleted(int iHouseNum)
 {
-	if(fDebugRohrpost) Log("Haus %d gelöscht",iHouseNum);
+	if(Debug_Rohrpost) Log("Haus %d gelöscht",iHouseNum);
 	if(GetLength(pHouseArray)==2) return(Delete());//ist nurnoch ein Haus da?, dann ist es eigentlich kein Rohrpost-Netzwerk mehr, sondern nurnoch ein Haufen Scheiße!
 	pHouseArray= DeleteRow(pHouseArray,iHouseNum);//Haus aus dem Array löschen
 	pLastHouseIDs= DeleteRow(pLastHouseIDs,iHouseNum);
@@ -245,7 +245,7 @@ func HouseDeleted(int iHouseNum)
 //Sämtliche Kopien löschen!
 func Delete()
 {
-	if(fDebugRohrpost) Log("----------Lösche Rohrpost----------");
+	if(Debug_Rohrpost) Log("----------Lösche Rohrpost----------");
 	for(var iCopyRows = 0; iCopyRows<GetLength(pCopiedObjects); iCopyRows++)
 	{
 		var row = pCopiedObjects[iCopyRows];
@@ -259,6 +259,6 @@ func Delete()
 		}
 	}
 	RemoveObject();
-	if(fDebugRohrpost) Log("----------Rohrpost gelöscht----------");
+	if(Debug_Rohrpost) Log("----------Rohrpost gelöscht----------");
 	return(1);
 }

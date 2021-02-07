@@ -212,6 +212,7 @@ public func RelaunchPosition(int iTeam,bool fY)
 }
 
 func MainEnergySupply(){return(1);}
+func IsStationScenario(){return(1);}
 
 //global func GetPosition(){return(Format("%d, %d,%d",GetID(),GetX(),GetY()));}
 global func OP(pObj)

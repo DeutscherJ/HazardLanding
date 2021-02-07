@@ -1,8 +1,0 @@
-NotAble=%s kann damit nicht umgehen.
-First=erst aufsteigen
-MG=MG
-Rockets=Raketen
-Bombs=Bomben
-AB=Atombomben
-Content=Inhalt
-Nothing=Nichts

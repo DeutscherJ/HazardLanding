@@ -1,3 +1,0 @@
-DE:Spawnschutzzeit
-US:Spawn protect time
-IT:Spawn protezionetempo

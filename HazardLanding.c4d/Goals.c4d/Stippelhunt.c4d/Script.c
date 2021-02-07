@@ -19,9 +19,9 @@ AS5B Alphastippel
 */
 //stippelArray=[];
 //var StippelIDs = [MB5B,KG5B,ST5B,MF5B,SK5B,AS5B];//SK5B
-func ConfigurableInChooserMenu(){return(1);}
+func HasChooseMenu(){return(1);}
 	
-func CooseMenu(pClonk,pChooser)
+func RuleCooseMenu(pClonk,pChooser)
 {
 	CreateMenu(GetID(), pClonk, 0, 0, "Anzahl platzierter Stippel", 0, 1);
 	var StippelIDs = [MB5B,KG5B,ST5B,MF5B,SK5B,AS5B];
@@ -37,7 +37,7 @@ func CooseMenu(pClonk,pChooser)
 func ChangeStippelNumber(iStippelNum,iPlus,pClonk)
 {
 	stippelNumArray[iStippelNum]+=iPlus;
-	CooseMenu(pClonk);
+	RuleCooseMenu(pClonk);
 	var menuPos = 1;
 	if(iPlus==1) menuPos = 0;
 	SelectMenuItem(iStippelNum*2+menuPos,pClonk);

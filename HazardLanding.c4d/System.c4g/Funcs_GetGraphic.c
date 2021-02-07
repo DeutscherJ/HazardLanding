@@ -7,7 +7,7 @@ static const GraphicLocal = 7800;
 // SetGraphics("",this(),0,1,GFXOV_MODE_Object,"",0,FindObject(HZCK))
 global func SetGraphics(par1,par2,par3,par4,par5,par6,par7,par8)
 {
-	Local(GraphicLocal)=[par1,par2,par3,par4,par5,par6,par7,par8];
+	Local(GraphicLocal,par2)=[par1,par2,par3,par4,par5,par6,par7,par8];
 	return(_inherited(par1,par2,par3,par4,par5,par6,par7,par8));
 }
 

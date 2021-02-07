@@ -41,8 +41,8 @@ func LateInit()
 }
 
 /*Konfigurationsmenü*/
-func ConfigurableInChooserMenu(){return(1);}
-func CooseMenu(pClonk,pChooser)
+func HasChooseMenu(){return(1);}
+func RuleCooseMenu(pClonk,pChooser)
 {
 	CreateMenu(GetID(), pClonk, 0, 0, "Datenwürfelplatzierung", 0, 1);
 	var dataCube = [_DC1,_DC2,_DC3];
@@ -68,7 +68,7 @@ func CooseMenu(pClonk,pChooser)
 func ChooseCollectionType(iType,pClonk)
 {
 	iDataCubeCollectionType = iType;
-	CooseMenu(pClonk);
+	RuleCooseMenu(pClonk);
 	SelectMenuItem(6+iType,pClonk);
 	return(1);
 }
@@ -76,7 +76,7 @@ func ChooseCollectionType(iType,pClonk)
 func ChangeDatacubeNumber(iCubeNum,iPlus,pClonk)
 {
 	dataCubeArray[iCubeNum]+=iPlus;
-	CooseMenu(pClonk);
+	RuleCooseMenu(pClonk);
 	var menuPos = 1;
 	if(iPlus==1) menuPos = 0;
 	SelectMenuItem(iCubeNum*2+menuPos,pClonk);

@@ -20,7 +20,7 @@ protected func Activate(iPlr) {
 }
 
 func HasChooseMenu(){return(1);}
-func RuleCooseMenu(pClonk,selectionNum)
+func RuleCooseMenu(pClonk,pChooserObject,selectionNum)
 {
 	var relaunchObject = FindObject(RLCH);
 	if(!relaunchObject) 
@@ -42,7 +42,7 @@ public func SetRelaunchNumber(iSet,pClonk,selectionNum)
 {
 	relaunchNumber=iSet;
 	relaunchArray=[];
-	RuleCooseMenu(pClonk,selectionNum);
+	RuleCooseMenu(pClonk,0,selectionNum);
 	for(var i=0; i<=70; i++)
 	{
 		relaunchArray[i]=iSet;

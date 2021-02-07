@@ -1,3 +1,0 @@
-DE:Fallschaden
-US:Fall damage
-IT:Rientrano i danni

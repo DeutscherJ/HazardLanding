@@ -1,2 +1,0 @@
-DE:Schwebeplatte
-US:Liftplate

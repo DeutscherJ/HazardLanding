@@ -7,18 +7,20 @@ protected func Activate(iPlr) {
 }
 
 global func SpawnTime() {
-  return(ObjectCount(SPSH));
+  return(ObjectCount2(Find_ID(SPSH)));
 }
 
 // Kann mittels des Spielzielauswählers ausgewählt werden
 public func IsChooseable() {return(1);}
 func HasChooseMenu(){return(1);}
-
-protected func RuleCooseMenu(pClonk, int iSelection)
+func RuleCooseMenu(pClonk,pChooserObject,iSelection)
 {
 	var relaunchObject = FindObject(SPSH);
-	if(!relaunchObject) 
+	if(!SpawnTime()) 
 		relaunchObject = CreateObject(SPSH,0,0,-1);
+	else if(!relaunchObject)
+		relaunchObject=this(); 
+	
   if(!pClonk) pClonk = GetCursor();
   // Menü aufmachen
   CreateMenu(GetID(), pClonk, relaunchObject,0,0,0, 1);
@@ -43,7 +45,7 @@ protected func STConf(id dummy, int iChange)
   // Menü wieder öffnen
   var iSel = 1;
   if(iChange == -1) iSel = 2;
-  RuleCooseMenu(0, iSel);
+  RuleCooseMenu(0,0, iSel);
 }
 public func Ready(pClonk)
 {

@@ -1,3 +1,0 @@
-DE:Bomben
-US:Bombs
-IT:Bombe

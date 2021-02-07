@@ -1,3 +1,0 @@
-DE:Schalter
-US:Switch
-IT:Interruttore

@@ -1,7 +1,0 @@
-NotAble=%s isn't able to use this
-First=First ascend
-MG=MG
-Rockets=Missles
-Bombs=Bombs
-AB=Atomic bombs
-Nothing=Nothing

@@ -1,3 +1,0 @@
-DE:Kiste
-US:Crate
-IT:Casella

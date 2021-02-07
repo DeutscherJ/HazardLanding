@@ -5,6 +5,7 @@
 #appendto DOOR
 
 local pObjectTransmitter;
+static const Debug_Rohrpost = 0;
 
 //Gebäude wurde an Rohrnetz angeschlossen
 func ConnectPipe(pOtherSide)
@@ -39,7 +40,7 @@ func CatchBlow(a,b,c,d,e,f)
 {
 	if(pObjectTransmitter)
 		pObjectTransmitter->~CheckHouses();
-	Log("%s wurde beschädigt",GetName());
+	if(Debug_Rohrpost) Log("%s wurde beschädigt",GetName());
 	return(_inherited(a,b,c,d,e,f));
 }
 
@@ -50,7 +51,7 @@ func Damage(a,b,c,d,e,f)
 		pObjectTransmitter->~CheckHouses();
 		ScheduleCall(pObjectTransmitter,"CheckHouses",1);
 	}
-	Log("%s wurde beschädigt",GetName());
+	if(Debug_Rohrpost) Log("%s wurde beschädigt",GetName());
 	return(_inherited(a,b,c,d,e,f));
 }
 
